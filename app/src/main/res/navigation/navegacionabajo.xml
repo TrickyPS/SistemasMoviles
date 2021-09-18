@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navegacionabajo"
+    app:startDestination="@id/fragmentoinicio">
+
+    <fragment
+        android:id="@+id/fragmentoinicio"
+        android:name="com.example.proyectosistemasmoviles.fragmentoinicio"
+        android:label="fragment_fragmentoinicio"
+        tools:layout="@layout/fragment_fragmentoinicio" />
+    <fragment
+        android:id="@+id/fragmentobuscar"
+        android:name="com.example.proyectosistemasmoviles.fragmentobuscar"
+        android:label="fragment_fragmentobuscar"
+        tools:layout="@layout/fragment_fragmentobuscar" />
+    <fragment
+        android:id="@+id/fragmentoperfil"
+        android:name="com.example.proyectosistemasmoviles.fragmentoperfil"
+        android:label="fragment_fragmentoperfil"
+        tools:layout="@layout/fragment_fragmentoperfil" />
+    <fragment
+        android:id="@+id/fragmentocontrasena"
+        android:name="com.example.proyectosistemasmoviles.fragmentocontrasena"
+        android:label="fragment_fragmentocontrasena"
+        tools:layout="@layout/fragment_fragmentocontrasena" />
+    <fragment
+        android:id="@+id/fragmentoresenas"
+        android:name="com.example.proyectosistemasmoviles.fragmentoresenas"
+        android:label="fragment_fragmentoresenas"
+        tools:layout="@layout/fragment_fragmentoresenas" />
+    <fragment
+        android:id="@+id/fragmentofavoritos"
+        android:name="com.example.proyectosistemasmoviles.fragmentofavoritos"
+        android:label="fragment_fragmentofavoritos"
+        tools:layout="@layout/fragment_fragmentofavoritos" />
+</navigation>
