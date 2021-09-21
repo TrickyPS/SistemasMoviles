@@ -17,11 +17,17 @@
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_iniciofragment.xml" value="0.25416666666666665" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_perfilfragment.xml" value="0.25416666666666665" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/menu/navegacionmenu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/drawable/border_input.xml" value="0.2203125" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/activity_inicio.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/activity_sign_in.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_cms.xml" value="0.33" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentofavoritos.xml" value="0.22" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoinicio.xml" value="0.2" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoresenas.xml" value="0.17572463768115942" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_mis_resenas.xml" value="0.33" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_inicio.xml" value="0.33" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_list_cms.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

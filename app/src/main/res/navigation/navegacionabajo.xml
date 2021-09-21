@@ -40,4 +40,9 @@
         android:name="com.example.proyectosistemasmoviles.fragment_mis_resenas"
         android:label="fragment_mis_resenas"
         tools:layout="@layout/fragment_mis_resenas" />
+    <fragment
+        android:id="@+id/fragment_cms"
+        android:name="com.example.proyectosistemasmoviles.fragment_cms"
+        android:label="fragment_cms"
+        tools:layout="@layout/fragment_cms" />
 </navigation>
