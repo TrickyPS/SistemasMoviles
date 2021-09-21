@@ -35,4 +35,9 @@
         android:name="com.example.proyectosistemasmoviles.fragmentofavoritos"
         android:label="fragment_fragmentofavoritos"
         tools:layout="@layout/fragment_fragmentofavoritos" />
+    <fragment
+        android:id="@+id/fragment_mis_resenas"
+        android:name="com.example.proyectosistemasmoviles.fragment_mis_resenas"
+        android:label="fragment_mis_resenas"
+        tools:layout="@layout/fragment_mis_resenas" />
 </navigation>
