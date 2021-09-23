@@ -25,15 +25,104 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView"
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carouselView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:fillColor="#FFFFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.273"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.004"
+                    app:pageColor="#00000000"
+                    app:radius="6dp"
+                    app:slideInterval="3000"
+                    app:strokeColor="#FF777777"
+                    app:strokeWidth="1dp" >
+
+                </com.synnapps.carouselview.CarouselView>
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Nombre de la reseña"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/carouselView" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="fbeirfbeirfbierfberifbreifbreifbrefibreifberfibrfikrebfeifberifberifberfberifbfribefikfbreikfreikrfbiefbreifberifbreifbfikrebfriefberiyfbreifbreirbfefbikrfbeifberkfbreikbrkrefbikrfbreifberfbrfikerfbierhfbeifbreibrfkerfb"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView23"
+                    app:layout_constraintVertical_bias="0.06" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="38dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_baseline_star_rate_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.978"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView25"
+                    app:layout_constraintVertical_bias="0.666" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="38dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ic_baseline_thumb_up_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.749"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView25"
+                    app:layout_constraintVertical_bias="0.285" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="38dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_baseline_thumb_down_alt_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                    app:layout_constraintStart_toEndOf="@+id/imageView6"
+                    app:layout_constraintTop_toBottomOf="@+id/textView25"
+                    app:layout_constraintVertical_bias="0.666" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/border_input"
+                    android:backgroundTint="#FFFFFF"
+                    android:ems="10"
+                    android:hint="Comenta algo..."
+                    android:inputType="textPersonName"
+                    android:paddingLeft="1dp"
+                    android:paddingRight="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

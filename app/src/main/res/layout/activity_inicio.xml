@@ -7,7 +7,6 @@
     tools:context=".Inicio">
 
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/generalonnav"
         android:layout_width="409dp"
@@ -20,13 +19,24 @@
     <fragment
         android:id="@+id/fragmentogeneral"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="409dp"
-        android:layout_height="680dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/generalonnav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/navegacionabajo" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/botoninicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/generalonnav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_add_circle_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

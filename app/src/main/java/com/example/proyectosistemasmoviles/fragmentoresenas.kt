@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import kotlinx.android.synthetic.main.fragment_fragmentoresenas.*
+import kotlinx.android.synthetic.main.fragment_fragmentoresenas.view.*
 
 
 class fragmentoresenas : Fragment() {
     var sampleImages = intArrayOf(
-        R.drawable.fondo,R.drawable.fondo,R.drawable.fondo,R.drawable.fondo
+        R.drawable.fotopasillo,R.drawable.fotopasillo,R.drawable.fotopasillo,R.drawable.fotopasillo
     )
 
     override fun onCreateView(
@@ -18,10 +19,6 @@ class fragmentoresenas : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-     /*  carouselView.pageCount = sampleImages.size
-    carouselView.setImageListener { position, imageView ->
-        imageView.setImageResource(position)
-    } */
 
 
 
@@ -29,6 +26,11 @@ class fragmentoresenas : Fragment() {
         var vista = inflater.inflate(R.layout.fragment_fragmentoresenas, container, false)
 
 
+        vista.carouselView.pageCount = sampleImages.size
+
+        vista.carouselView.setImageListener { position, imageView ->
+            imageView.setImageResource(sampleImages[position])
+        }
 
 
 
