@@ -17,7 +17,7 @@ class fragmentoperfil : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var vista = inflater.inflate(R.layout.fragment_fragmentoperfil, container, false)
-        vista.vistacompleta
+
         return vista
     }
 }
