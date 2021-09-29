@@ -32,28 +32,40 @@ class SignIn : AppCompatActivity() {
         startActivity(activityLogin)
         finish()
     }
-    private fun AgregarUsuario(){
-        val nombre:String = CampoNombre.text.toString()
-        val apellido:String = CampoNombre.text.toString()
-        val email:String = CampoApellido.text.toString()
-        val password:String = CampoContraseña.text.toString()
+    private fun AgregarUsuario() {
+        val nombre: String = CampoNombre.text.toString()
+        val apellido: String = CampoNombre.text.toString()
+        val email: String = CampoApellido.text.toString()
+        val password: String = CampoContraseña.text.toString()
 
-        if(nombre.isEmpty() && apellido.isEmpty() && email.isEmpty() && password.isEmpty()){
-            Toast.makeText(this,"Llene todos los campos",Toast.LENGTH_LONG).show()
-        }
-        else{
-            val userServices: UserService = RestEngine.getRestEngine().create(UserService::class.java)
-            val result: Call<Usuario> = userServices.AgregaUsuario(Usuario(null,nombre,apellido,email,password,null,null,null))
+        if (nombre.isEmpty() && apellido.isEmpty() && email.isEmpty() && password.isEmpty()) {
+            Toast.makeText(this, "Llene todos los campos", Toast.LENGTH_LONG).show()
+        } else {
+            val userServices: UserService =
+                RestEngine.getRestEngine().create(UserService::class.java)
+            val result: Call<Usuario> = userServices.AgregaUsuario(
+                Usuario(
+                    null,
+                    nombre,
+                    apellido,
+                    email,
+                    password,
+                    null,
+                    null,
+                    null
+                )
+            )
 
             result.enqueue(object : Callback<Usuario> {
                 override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                     val item = response.body()
-                    if(item != null) {
+                    if (item != null) {
 
-                    }else{
+                    } else {
 
 
-                     Toast.makeText(this@SignIn,"No se ha podido registrar",Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@SignIn, "No se ha podido registrar", Toast.LENGTH_LONG)
+                            .show()
                     }
                 }
 
@@ -62,4 +74,5 @@ class SignIn : AppCompatActivity() {
                 }
             })
         }
+    }
 }

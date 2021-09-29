@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".fragmentoresenas">
 
     <!-- TODO: Update blank fragment layout -->
@@ -39,7 +40,7 @@
                     app:radius="6dp"
                     app:slideInterval="3000"
                     app:strokeColor="#FF777777"
-                    app:strokeWidth="1dp" >
+                    app:strokeWidth="1dp">
 
                 </com.synnapps.carouselview.CarouselView>
 

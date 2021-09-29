@@ -10,8 +10,9 @@ class Inicio : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
-        val frajj = AppBarConfiguration(setOf(R.id.fragmentoinicio,R.id.fragmentobuscar,R.id.fragmentoperfil))
+        AppBarConfiguration(setOf(R.id.fragmentoinicio,R.id.fragmentobuscar,R.id.fragmentoperfil))
         generalonnav.setupWithNavController(findNavController(R.id.fragmentogeneral))
+
        botoninicio.setOnClickListener {
             val frag = fragmentoresenas()
             val args = Bundle()
@@ -19,6 +20,7 @@ class Inicio : AppCompatActivity() {
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentogeneral, frag)
             transaction.commit()
+
         }
     }
 }
