@@ -1,5 +1,6 @@
 package com.example.proyectosistemasmoviles
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import android.widget.Toast.makeText
@@ -15,6 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SignIn : AppCompatActivity() {
+    var pref: SharedPreferences? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
@@ -25,6 +27,7 @@ class SignIn : AppCompatActivity() {
      Bregistro.setOnClickListener {
          AgregarUsuario()
      }
+        pref = getSharedPreferences("usuario",MODE_PRIVATE);
     }
 
     private fun muestraLogin() {
@@ -34,8 +37,8 @@ class SignIn : AppCompatActivity() {
     }
     private fun AgregarUsuario() {
         val nombre: String = CampoNombre.text.toString()
-        val apellido: String = CampoNombre.text.toString()
-        val email: String = CampoApellido.text.toString()
+        val apellido: String = CampoApellido.text.toString()
+        val email: String = CampoCorreo.text.toString()
         val password: String = CampoContraseña.text.toString()
 
         if (nombre.isEmpty() && apellido.isEmpty() && email.isEmpty() && password.isEmpty()) {
@@ -52,6 +55,7 @@ class SignIn : AppCompatActivity() {
                     password,
                     null,
                     null,
+                    null,
                     null
                 )
             )
@@ -60,8 +64,29 @@ class SignIn : AppCompatActivity() {
                 override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                     val item = response.body()
                     if (item != null) {
+                        if(item?.status =="exists"){
+                            Toast.makeText(this@SignIn, "Este correo ya esta registrado", Toast.LENGTH_LONG)
+                                .show()
+                        }else{
+                            //TODO AQUI COLOCAR EL CODIGO
 
-                    } else {
+                                val id: Int= item.id.toString().toInt()
+                                val nombre: String =   item.nombre.toString()
+                                val apellido: String = item.apellido.toString()
+                                val email: String =    item.email.toString()
+                                val password: String = item.password.toString()
+
+                            val editor = pref?.edit()
+                            editor?.putInt("Id",id)
+                            editor?.putString("Nombre", nombre)
+                            editor?.putString("Apellido", apellido)
+                            editor?.putString("Email", email)
+                            editor?.putString("Password", password)
+
+                            editor?.commit()
+                        }
+                    }
+                    else {
 
 
                         Toast.makeText(this@SignIn, "No se ha podido registrar", Toast.LENGTH_LONG)
@@ -76,3 +101,4 @@ class SignIn : AppCompatActivity() {
         }
     }
 }
+
