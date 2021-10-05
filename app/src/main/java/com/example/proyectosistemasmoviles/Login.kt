@@ -1,6 +1,7 @@
 package com.example.proyectosistemasmoviles
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,14 +18,26 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        var uri = Uri.parse("android.resource://$packageName/${R.raw.vid}")
+        video.setVideoURI(uri)
+        video.start()
 
-      Binicia.setOnClickListener {
-   iniciaSesion()
-      }
-     Baregistro.setOnClickListener {
-         muestraRegistro()
-     }
+
         pref = getSharedPreferences("usuario",MODE_PRIVATE);
+
+      var uds =  pref?.getInt("Id",0)
+if(uds != 0){
+
+    muestraInicio()
+
+}
+        Binicia.setOnClickListener {
+            iniciaSesion()
+        }
+        Baregistro.setOnClickListener {
+            muestraRegistro()
+        }
+
     }
 
     private fun muestraInicio() {
@@ -38,8 +51,8 @@ class Login : AppCompatActivity() {
      /*   finish()*/
     }
     private fun iniciaSesion(){
-        val email: String = Campocorreo.toString()
-        val password: String = Campocontraseña.toString()
+        val email: String = Campocorreo.text.toString()
+        val password: String = Campocontraseña.text.toString()
         if (email.isEmpty() && password.isEmpty()){
             Toast.makeText(this, "Llene todos los campos", Toast.LENGTH_LONG).show()
         }else{
