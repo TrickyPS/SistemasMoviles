@@ -6,7 +6,7 @@ package com.example.proyectosistemasmoviles.Modelos
  var apellido:String? =null,
  var email:String?=null,
  var password:String?=null,
- var imagen:String?=null,
+ var image:String?=null,
  var created_at:String?=null,
  var updated_at:String?=null,
  var status:String?=null

@@ -7,10 +7,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_input2">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imagenlista"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
@@ -22,14 +23,14 @@
             app:srcCompat="@drawable/alfons_morales_ylswjsy7stw_unsplash" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/textolista"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="file path"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imagenlista"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

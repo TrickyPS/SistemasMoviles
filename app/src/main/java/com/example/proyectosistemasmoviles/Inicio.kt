@@ -15,10 +15,11 @@ class Inicio : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
         AppBarConfiguration(setOf(R.id.fragmentoinicio,R.id.fragmentobuscar,R.id.fragmentoperfil))
+
         generalonnav.setupWithNavController(findNavController(R.id.fragmentogeneral))
 
        botoninicio.setOnClickListener {
-            val frag = fragment_cms()
+            val frag = fragmentocms()
             val args = Bundle()
             frag.setArguments(args)
             val transaction = supportFragmentManager.beginTransaction()

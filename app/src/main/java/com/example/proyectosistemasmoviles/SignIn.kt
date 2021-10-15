@@ -1,6 +1,8 @@
 package com.example.proyectosistemasmoviles
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import android.widget.Toast.makeText
@@ -20,6 +22,17 @@ class SignIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+        video2.setOnCompletionListener(MediaPlayer.OnCompletionListener {
+
+            video2.start() //need to make transition seamless.
+
+        })
+        var uri = Uri.parse("android.resource://$packageName/${R.raw.libro}")
+        video2.setVideoURI(uri)
+
+        video2.requestFocus()
+
+        video2.start()
 
         Bainicia.setOnClickListener {
             muestraLogin()
@@ -29,7 +42,12 @@ class SignIn : AppCompatActivity() {
      }
         pref = getSharedPreferences("usuario",MODE_PRIVATE);
     }
-
+    override fun onResume() {
+        super.onResume()
+        video2.resume()
+        video2.requestFocus()
+        video2.start()
+    }
     private fun muestraLogin() {
         val activityLogin = Intent(this, Login::class.java)
         startActivity(activityLogin)

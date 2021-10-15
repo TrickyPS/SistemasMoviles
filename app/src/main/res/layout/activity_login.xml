@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/pas"
     android:backgroundTintMode="multiply"
-    tools:context=".Login">
+    tools:context=".Login"
+    android:keepScreenOn="true">
 
     <VideoView
         android:id="@+id/video"
@@ -18,7 +19,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"/>
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -40,8 +43,8 @@
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:layout_marginTop="92dp"
-        android:background="#81393232"
-        android:backgroundTint="#F3090808"
+        android:background="@drawable/botond"
+        android:backgroundTint="#9C0C0C0C"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:textColor="#FFFFFF"
@@ -56,8 +59,8 @@
         android:id="@+id/Campocontraseña"
         android:layout_width="300dp"
         android:layout_height="35dp"
-        android:background="#81393232"
-        android:backgroundTint="#F3090808"
+        android:background="@drawable/botond"
+        android:backgroundTint="#9C0C0C0C"
         android:ems="10"
         android:inputType="textPassword"
         android:textColor="#FFFFFF"
@@ -72,7 +75,8 @@
     <Button
         android:id="@+id/Binicia"
         android:layout_width="200dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
+        android:background="@drawable/botond"
         android:backgroundTint="#000000"
         android:text="Inicia sesion"
         android:textColor="#FFFFFF"
@@ -90,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:fontFamily="@font/archivo_narrow"
-        android:text=" Correo electronico"
+        android:text="Correo electronico"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/Campocorreo"
@@ -109,7 +113,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/Campocontraseña"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -119,7 +123,7 @@
         android:layout_marginBottom="36dp"
         android:fontFamily="@font/anton"
         android:text="Registrate"
-        android:textColor="#D4FBCF"
+        android:textColor="#273C67"
         android:textColorHighlight="#0629FD"
         android:textColorLink="#01040C"
         android:textSize="20sp"
@@ -127,7 +131,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Binicia"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.664" />
 
     <TextView
         android:id="@+id/textView7"
@@ -143,6 +147,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Binicia"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,16 +12,29 @@ import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.media.MediaPlayer
+import android.media.MediaPlayer.OnCompletionListener
+import android.view.WindowManager
+
 
 class Login : AppCompatActivity() {
     var pref: SharedPreferences? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        var uri = Uri.parse("android.resource://$packageName/${R.raw.vid}")
-        video.setVideoURI(uri)
-        video.start()
 
+
+        video.setOnCompletionListener(OnCompletionListener {
+
+            video.start() //need to make transition seamless.
+
+        })
+        var uri = Uri.parse("android.resource://$packageName/${R.raw.video}")
+        video.setVideoURI(uri)
+
+        video.requestFocus()
+
+        video.start()
 
         pref = getSharedPreferences("usuario",MODE_PRIVATE);
 
@@ -40,6 +53,12 @@ if(uds != 0){
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        video.resume()
+        video.requestFocus()
+        video.start()
+    }
     private fun muestraInicio() {
         val activityHome = Intent(this, Inicio::class.java)
         startActivity(activityHome)

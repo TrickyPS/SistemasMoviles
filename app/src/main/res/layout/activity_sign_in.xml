@@ -9,6 +9,20 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="-8dp">
 
+    <VideoView
+        android:id="@+id/video2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -26,10 +40,11 @@
     <Button
         android:id="@+id/Bregistro"
         android:layout_width="200dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:layout_marginTop="40dp"
+        android:background="@drawable/botond"
         android:backgroundTint="#000000"
-        android:text="Inicia sesion"
+        android:text="Registrate"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +74,7 @@
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/anton"
         android:text="Inicia Sesion"
-        android:textColor="#D4FBCF"
+        android:textColor="#273C67"
         android:textColorHighlight="#0629FD"
         android:textColorLink="#01040C"
         android:textSize="20sp"
@@ -75,8 +90,8 @@
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:layout_marginTop="32dp"
-        android:background="#81393232"
-        android:backgroundTint="#F3090808"
+        android:background="@drawable/botond"
+        android:backgroundTint="#9C0C0C0C"
         android:ems="10"
         android:hint="Escribe tu apellido"
         android:inputType="textPersonName"
@@ -95,8 +110,8 @@
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
-        android:background="#81393232"
-        android:backgroundTint="#F3090808"
+        android:background="@drawable/botond"
+        android:backgroundTint="#9C0C0C0C"
 
         android:ems="10"
         android:hint="Escribe tu nombre"
@@ -117,8 +132,8 @@
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:layout_marginTop="44dp"
-        android:background="#81393232"
-        android:backgroundTint="#F3090808"
+        android:background="@drawable/botond"
+        android:backgroundTint="#9C0C0C0C"
         android:ems="10"
         android:hint="Escribe tu contraseña"
         android:inputType="textPassword"
@@ -138,11 +153,11 @@
         android:fontFamily="@font/archivo_narrow"
         android:text="Contraseña"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:textCursorDrawable="@drawable/cursor"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/CampoContraseña"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CampoCorreo"
         app:layout_constraintVertical_bias="1.0" />
@@ -152,8 +167,8 @@
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:layout_marginTop="36dp"
-        android:background="#81393232"
-        android:backgroundTint="#F3090808"
+        android:background="@drawable/botond"
+        android:backgroundTint="#9C0C0C0C"
         android:ems="10"
         android:hint="Escribe tu correo electonico"
         android:inputType="textEmailAddress"
@@ -181,10 +196,10 @@
 
         app:layout_constraintBottom_toTopOf="@+id/CampoCorreo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CampoNombre"
-        app:layout_constraintVertical_bias="0.944" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView11"
@@ -197,7 +212,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/CampoApellido"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintHorizontal_bias="0.158"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="1.0" />
