@@ -37,6 +37,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 class fragmentocms : Fragment() {
@@ -191,8 +192,7 @@ private lateinit var cargacms: cargacms
 
     private fun saveImageReview(idReview :Int,img: ByteArray) {
 
-        val encodedString:String =  Base64.getEncoder().encodeToString(img)
-
+      val encodedString:String =  Base64.getEncoder().encodeToString(img)
         var images : Images = Images(
             null,
             encodedString,

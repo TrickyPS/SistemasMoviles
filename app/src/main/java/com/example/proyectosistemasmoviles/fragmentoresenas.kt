@@ -17,11 +17,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.widget.Toast
 import com.example.proyectosistemasmoviles.Modelos.*
-import com.example.proyectosistemasmoviles.services.ImagesService
-import com.example.proyectosistemasmoviles.services.Reseñas
-import com.example.proyectosistemasmoviles.services.RestEngine
-import com.example.proyectosistemasmoviles.services.UserService
+import com.example.proyectosistemasmoviles.services.*
 import com.synnapps.carouselview.ImageListener
 import com.synnapps.carouselview.ViewListener
 import kotlinx.android.synthetic.main.item_list_cms.*
@@ -36,6 +34,7 @@ class fragmentoresenas : Fragment() {
 
     var carouselImages=  mutableListOf<Bitmap>()
     var carouselTitle:String? = null
+    var like = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,20 +52,66 @@ class fragmentoresenas : Fragment() {
         getReview(id_review!!,id!!);
 
 
-        var like = false
+
         vista.heart.setOnClickListener {
 
             like = heartanimation(heart,R.raw.animacion,like)
+            enviarVoto(id,id_review)
         }
 var like2 = false
         vista.botons.setOnClickListener {
-
-           like2 = heartanimation2(yes,R.raw.anim2,like2)
+            val comentario = editTextTextPersonName5.text
+            if(!comentario.isEmpty()) {
+                like2 = heartanimation2(yes, R.raw.anim2, like2)
+                enviarComentario(id, id_review,comentario.toString())
+            }
         }
 
 
 
         return vista
+    }
+
+    private fun enviarVoto(id_user: Int, id_review: Int) {
+        val votoService : VotoService = RestEngine.getRestEngine().create(VotoService::class.java)
+        val result: Call<Estatus> = votoService.addVoto(Votos(id_user,id_review,like))
+        //Para traer la info del review
+        result.enqueue(object : Callback<Estatus> {
+            override fun onResponse(call: Call<Estatus>, response: Response<Estatus>) {
+                var resp = response.body()
+                if(resp!= null){
+                   println(resp.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<Estatus>, t: Throwable) {
+                println(t.toString())
+            }
+
+        })
+    }
+
+    private fun enviarComentario(id_user:Int,id_review: Int,comentario:String) {
+
+            val comentariosService : ComentariosService = RestEngine.getRestEngine().create(ComentariosService::class.java)
+            editTextTextPersonName5.setText("")
+            val result: Call<Estatus> = comentariosService.addComentario(Comentarios(comentario,id_review,id_user))
+            //Para traer la info del review
+            result.enqueue(object : Callback<Estatus> {
+                override fun onResponse(call: Call<Estatus>, response: Response<Estatus>) {
+                    var resp = response.body()
+                    if(resp!= null){
+                        //TODO agregar mensaje a lista de comentarios-adapter
+                    }
+                }
+
+                override fun onFailure(call: Call<Estatus>, t: Throwable) {
+                    println(t.toString())
+                }
+
+            })
+
+
     }
 
     var imageListener: ImageListener = object : ImageListener {
@@ -87,6 +132,8 @@ var like2 = false
                     txtPremisa.text = resp.subtitulo;
                     txtTitleBook.text = resp.titulo;
                     txtResena.text = resp.contenido;
+                    if(resp.isVoted == 1)
+                        like = heartanimation(heart,R.raw.animacion,like)
                     //Para traer las imagenes del preview
                     getAllImages(id_review)
                 }
@@ -121,7 +168,7 @@ var like2 = false
             }
 
             override fun onFailure(call: Call<List<Images>>, t: Throwable) {
-                println(t.toString())
+                getAllImages(idReview)
             }
 
         })

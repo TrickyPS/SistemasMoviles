@@ -34,7 +34,7 @@ class HomeAdapter(private val context: Context, private val reviewsList: List<Re
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         var view = holder.itemView
-        val stream = reviewsList[position].image
+        //val stream = reviewsList[position].image
         val imgEncode = Base64.getDecoder().decode(reviewsList[position].image)
         val imageBitmap:Bitmap = BitmapFactory.decodeByteArray(imgEncode, 0, imgEncode.size)
         view.imgReview.setImageBitmap(imageBitmap)

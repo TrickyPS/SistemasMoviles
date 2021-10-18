@@ -10,5 +10,5 @@ data class ReviewPublic(
     var image:String?=null,
     var created_at:String?=null,
     var votos:Int? = null,
-    var isVoted:Boolean? = null
+    var isVoted:Int? = null
 )

@@ -24,7 +24,9 @@ import retrofit2.Response
 import androidx.fragment.app.FragmentActivity
 
 import android.app.Activity
+import android.opengl.Visibility
 import android.view.ContextMenu
+import kotlinx.android.synthetic.main.fragment_fragmentoinicio.*
 import java.io.Serializable
 
 
@@ -61,15 +63,17 @@ class fragmentoinicio : Fragment() {
                 if(resp!= null){
 
                   for(review in resp){
-                      reviewsList.add(review)
-                      homeAdapter.notifyDataSetChanged()
+                     reviewsList.add(review)
+
                   }
+                   homeAdapter.notifyDataSetChanged()
 
                 }
+                progressBarInicio.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<List<ReviewPreview>>, t: Throwable) {
-                print(t.toString())
+                getAllPreviews()
             }
 
         })
