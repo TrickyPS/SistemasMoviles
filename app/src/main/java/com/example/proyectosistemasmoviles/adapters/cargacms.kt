@@ -10,6 +10,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectosistemasmoviles.R
 import kotlinx.android.synthetic.main.item_list_cms.view.*
+import java.io.ByteArrayOutputStream
+import java.util.*
 
 
 class cargacms(private val context: Context, private val imageList: List<ByteArray>): RecyclerView.Adapter<cargacms.ImagesViewHolder>() {
@@ -24,8 +26,11 @@ class cargacms(private val context: Context, private val imageList: List<ByteArr
 
     override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
         holder.itemView.textolista.text = "Recurso " + (position + 1) + " Listo"
-        val bmp = BitmapFactory.decodeByteArray(imageList[position], 0, imageList[position].size)
+        val imgByteArray = imageList[position]
+        val bmp = BitmapFactory.decodeByteArray(imgByteArray, 0, imgByteArray.size)
         val image: ImageView = holder.itemView.imagenlista as ImageView
+
+
         image.setImageBitmap(Bitmap.createScaledBitmap(bmp, 50, 50, false))
     }
 

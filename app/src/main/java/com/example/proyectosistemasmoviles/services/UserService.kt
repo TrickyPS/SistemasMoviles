@@ -1,5 +1,6 @@
 package com.example.proyectosistemasmoviles.services
 
+import com.example.proyectosistemasmoviles.Modelos.Estatus
 import com.example.proyectosistemasmoviles.Modelos.Usuario
 import retrofit2.Call
 import retrofit2.http.*

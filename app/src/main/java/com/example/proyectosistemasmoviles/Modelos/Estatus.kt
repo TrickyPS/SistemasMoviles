@@ -1,5 +1,5 @@
 package com.example.proyectosistemasmoviles.Modelos
 
-data class estatus (
-    val estat : Boolean? = false
+data class Estatus (
+    val estatus : Boolean? = false
         )

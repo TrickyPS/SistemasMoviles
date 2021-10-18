@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_fragmentoperfil.*
-import kotlinx.android.synthetic.main.fragment_fragmentoresenas.view.*
 import android.content.SharedPreferences
 import android.os.Build
 
@@ -17,25 +16,21 @@ import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Handler
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.checkSelfPermission
 import com.airbnb.lottie.LottieAnimationView
-import com.example.proyectosistemasmoviles.Modelos.Review
+import com.example.proyectosistemasmoviles.Modelos.Estatus
 import com.example.proyectosistemasmoviles.Modelos.Usuario
 import com.example.proyectosistemasmoviles.services.RestEngine
 import com.example.proyectosistemasmoviles.services.UserService
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.fragment_cms.*
-import kotlinx.android.synthetic.main.fragment_fragmentoresenas.*
+import kotlinx.android.synthetic.main.activity_inicio.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
-import java.security.AllPermission
 import java.util.*
 
 
@@ -47,11 +42,15 @@ class fragmentoperfil : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val  pref = context?.getSharedPreferences("usuario", Context.MODE_PRIVATE)
-          id = pref?.getInt("Id",0)
-
         // Inflate the layout for this fragment
         var vista = inflater.inflate(R.layout.fragment_fragmentoperfil, container, false)
+        //SharedPreference
+        pref = context?.getSharedPreferences("usuario", Context.MODE_PRIVATE)
+          id = pref?.getInt("Id",0)
+        var name = pref?.getString("Nombre","");
+        var email = pref?.getString("Email","");
+        var image = pref?.getString("Image","");
+
 
         vista.cierraSesion.setOnClickListener {
 cierras()
@@ -66,6 +65,16 @@ cierras()
 
 
         }
+        vista.txtEmail.text = email;
+        vista.txtName.text = name;
+        if(!image!!.isEmpty()){
+            val imageBytes = Base64.getDecoder().decode(image)
+            val imageBitmap:Bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+            vista?.imagenPerfil?.setImageBitmap(imageBitmap)
+        }
+
+
+
         return vista
 
     }
@@ -159,13 +168,13 @@ cierras()
 
             if(requestcode == 1000) {
 
-                imagenperfil.setImageURI(data?.data)
+                imagenPerfil.setImageURI(data?.data)
 
-              val bitmaps = (imagenperfil.getDrawable() as BitmapDrawable).bitmap
+              val bitmaps = (imagenPerfil.getDrawable() as BitmapDrawable).bitmap
 
                 val comprime = ByteArrayOutputStream()
 
-                bitmaps.compress(Bitmap.CompressFormat.JPEG, 25, comprime)
+                bitmaps.compress(Bitmap.CompressFormat.JPEG, 10, comprime)
 
                /*  dataDBHelper.insertAvatar(baos.toByteArray()) */
                var imdf: ByteArray = comprime.toByteArray()
@@ -195,7 +204,14 @@ cierras()
 
         result.enqueue(object : Callback<Usuario> {
             override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
-                println("NICE")
+                var resp = response.body()
+                if(resp!= null){
+
+                        val editor = pref?.edit()
+                        editor?.putString("Image",encodedString)
+                        editor?.commit()
+
+                }
             }
 
             override fun onFailure(call: Call<Usuario>, t: Throwable) {

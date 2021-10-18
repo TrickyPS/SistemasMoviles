@@ -5,23 +5,21 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
-import android.widget.Toast.makeText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectosistemasmoviles.Modelos.Usuario
 import com.example.proyectosistemasmoviles.services.RestEngine
 import com.example.proyectosistemasmoviles.services.UserService
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.Binicia
-import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SignIn : AppCompatActivity() {
+class SignUp : AppCompatActivity() {
     var pref: SharedPreferences? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_sign_up)
         video2.setOnCompletionListener(MediaPlayer.OnCompletionListener {
 
             video2.start() //need to make transition seamless.
@@ -54,8 +52,8 @@ class SignIn : AppCompatActivity() {
         finish()
     }
     private fun AgregarUsuario() {
-        val nombre: String = CampoNombre.text.toString()
-        val apellido: String = CampoApellido.text.toString()
+        val nombre: String = CampoApellido.text.toString()
+        val apellido: String = CampoNombre.text.toString()
         val email: String = CampoCorreo.text.toString()
         val password: String = CampoContraseña.text.toString()
 
@@ -83,31 +81,19 @@ class SignIn : AppCompatActivity() {
                     val item = response.body()
                     if (item != null) {
                         if(item?.status =="exists"){
-                            Toast.makeText(this@SignIn, "Este correo ya esta registrado", Toast.LENGTH_LONG)
+                            Toast.makeText(this@SignUp, "Este correo ya esta registrado", Toast.LENGTH_LONG)
                                 .show()
                         }else{
                             //TODO AQUI COLOCAR EL CODIGO
 
-                                val id: Int= item.id.toString().toInt()
-                                val nombre: String =   item.nombre.toString()
-                                val apellido: String = item.apellido.toString()
-                                val email: String =    item.email.toString()
-                                val password: String = item.password.toString()
-
-                            val editor = pref?.edit()
-                            editor?.putInt("Id",id)
-                            editor?.putString("Nombre", nombre)
-                            editor?.putString("Apellido", apellido)
-                            editor?.putString("Email", email)
-                            editor?.putString("Password", password)
-
-                            editor?.commit()
+                             var activityLogin = Intent(this@SignUp,Login::class.java)
+                            startActivity(activityLogin)
                         }
                     }
                     else {
 
 
-                        Toast.makeText(this@SignIn, "No se ha podido registrar", Toast.LENGTH_LONG)
+                        Toast.makeText(this@SignUp, "No se ha podido registrar", Toast.LENGTH_LONG)
                             .show()
                     }
                 }

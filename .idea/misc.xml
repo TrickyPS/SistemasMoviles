@@ -3,52 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/drawable/border_input.xml" value="0.2703125" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/drawable/ic_baseline_star_rate_24.xml" value="0.2703125" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/drawable/ic_baseline_thumb_down_alt_24.xml" value="0.2703125" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/drawable/ic_baseline_thumb_up_24.xml" value="0.2703125" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/drawable/imagenredonda.xml" value="0.2703125" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/activity_inicio.xml" value="0.2" />
+        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/activity_inicio.xml" value="0.1" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/activity_perfil.xml" value="0.4" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
+        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/activity_sign_in.xml" value="0.4" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_buscarfragment.xml" value="0.136" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_cms.xml" value="0.264" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_fragmentobuscar.xml" value="0.1" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_fragmentocontrasena.xml" value="0.4" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_fragmentofavoritos.xml" value="0.15052083333333333" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_fragmentoinicio.xml" value="0.2" />
+        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_fragmentocontrasena.xml" value="0.25416666666666665" />
+        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_fragmentoinicio.xml" value="0.1" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_fragmentoperfil.xml" value="0.264" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_fragmentoresenas.xml" value="0.264" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_iniciofragment.xml" value="0.25416666666666665" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_mis_resenas.xml" value="0.20729166666666668" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragment_perfilfragment.xml" value="0.25416666666666665" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/fragmentonoticia.xml" value="0.25271739130434784" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/item_data.xml" value="0.6" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/item_inicio.xml" value="0.23550724637681159" />
-        <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/layout/item_list_cms.xml" value="0.23550724637681159" />
         <entry key="..\:/CARPETA RESPALDO/ProyectoAndroidUNI/app/src/main/res/menu/navegacionmenu.xml" value="0.25416666666666665" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/drawable/border_input2.xml" value="0.10648148148148148" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/drawable/botond.xml" value="0.22592592592592592" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/drawable/cursor.xml" value="0.23177083333333334" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2703125" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/drawable/linea.xml" value="0.2703125" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/drawable/lineaarriba.xml" value="0.2111111111111111" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/activity_inicio.xml" value="0.2" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/activity_login.xml" value="0.176" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/activity_sign_in.xml" value="0.2" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/fragment_cms.xml" value="0.264" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/fragment_fragmentobuscar.xml" value="0.264" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/fragment_fragmentocontrasena.xml" value="0.6" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/fragment_fragmentofavoritos.xml" value="0.22509057971014493" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoinicio.xml" value="0.4" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoperfil.xml" value="0.6" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoresenas.xml" value="0.264" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/fragment_mis_resenas.xml" value="0.152" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/item_data2.xml" value="0.4" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/item_inicio.xml" value="0.25416666666666665" />
-        <entry key="..\:/SistemasMoviles/app/src/main/res/layout/item_list_cms.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/activity_inicio.xml" value="0.1895910780669145" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/activity_login.xml" value="0.12083333333333333" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/activity_sign_in.xml" value="0.1453125" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/activity_sign_up.xml" value="0.18" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_cms.xml" value="0.18" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentofavoritos.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoinicio.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoperfil.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoresenas.xml" value="0.25" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_mis_resenas.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_carousel.xml" value="0.10677083333333333" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_data.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_data2.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_inicio.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -4,6 +4,12 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import com.google.gson.GsonBuilder
+
+import com.google.gson.Gson
+
+
+
 
 
 class RestEngine {
@@ -13,6 +19,10 @@ class RestEngine {
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
+            //val gson = GsonBuilder()
+              //  .setLenient()
+              //  .create()
+
             val client =  OkHttpClient.Builder().addInterceptor(interceptor)
                 .connectTimeout(5, TimeUnit.MINUTES) // connect timeout
                 .writeTimeout(5, TimeUnit.MINUTES) // write timeout
@@ -20,7 +30,6 @@ class RestEngine {
                 .build()
             val retrofit =  Retrofit.Builder()
                 .baseUrl("http://localhost:3000/controllers/") // tu url
-                //.baseUrl("http://localhost:3050/api/") // local
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

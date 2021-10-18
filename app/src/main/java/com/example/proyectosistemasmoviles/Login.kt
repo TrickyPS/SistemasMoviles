@@ -12,9 +12,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.media.MediaPlayer
 import android.media.MediaPlayer.OnCompletionListener
-import android.view.WindowManager
 
 
 class Login : AppCompatActivity() {
@@ -65,7 +63,7 @@ if(uds != 0){
        /* finish()*/
     }
     private fun muestraRegistro() {
-        val activityRegistro = Intent(this, SignIn::class.java)
+        val activityRegistro = Intent(this, SignUp::class.java)
         startActivity(activityRegistro)
      /*   finish()*/
     }
@@ -104,6 +102,7 @@ if(uds != 0){
 
                         val editor = pref?.edit()
                         editor?.putInt("Id", id)
+                        editor?.putString("Image", item.image)
                         editor?.putString("Nombre", nombre)
                         editor?.putString("Apellido", apellido)
                         editor?.putString("Email", email)

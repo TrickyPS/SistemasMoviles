@@ -10,6 +10,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,9 +20,13 @@ import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.proyectosistemasmoviles.Modelos.Estatus
+import com.example.proyectosistemasmoviles.Modelos.Images
 import com.example.proyectosistemasmoviles.Modelos.Review
 import com.example.proyectosistemasmoviles.Modelos.Usuario
 import com.example.proyectosistemasmoviles.adapters.cargacms
+import com.example.proyectosistemasmoviles.services.ImagesService
 import com.example.proyectosistemasmoviles.services.Reseñas
 import com.example.proyectosistemasmoviles.services.RestEngine
 import com.example.proyectosistemasmoviles.services.UserService
@@ -29,7 +34,10 @@ import kotlinx.android.synthetic.main.fragment_cms.*
 import kotlinx.android.synthetic.main.fragment_cms.view.*
 import kotlinx.android.synthetic.main.fragment_fragmentoperfil.*
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.ByteArrayOutputStream
+import java.util.*
 
 class fragmentocms : Fragment() {
     var pref: SharedPreferences? = null
@@ -52,7 +60,7 @@ private lateinit var cargacms: cargacms
        }
 
         vista.botonsubir.setOnClickListener {
-
+            subirreseña()
 
         }
         return vista
@@ -71,6 +79,30 @@ private lateinit var cargacms: cargacms
                null,titulo,premisa,descripcion,id,null,null
                 )
             )
+            result.enqueue(object : Callback<Review> {
+                override fun onResponse(call: Call<Review>, response: Response<Review>) {
+                    var resp = response.body()
+                    if(resp!= null){
+                        var id = resp.id;
+                        for( image in imageList ){
+                            saveImageReview(id!!,image)
+                        }
+                        //Limpia el formulario
+                        imageList.clear();
+                        cargacms.notifyDataSetChanged()
+                        titulop.setText("")
+                        premisap.setText("")
+                        resenap.setText("")
+
+                    }
+                }
+
+                override fun onFailure(call: Call<Review>, t: Throwable) {
+                    println(t.toString())
+                }
+
+            })
+
         }
 
     }
@@ -141,19 +173,49 @@ private lateinit var cargacms: cargacms
 
             if (requestcode == 1000) {
 
-                botoni.setImageURI(data?.data)
+                imgHiden.setImageURI(data?.data)
 
-                val bitmaps = (botoni.getDrawable() as BitmapDrawable).bitmap
+                val bitmaps = (imgHiden.getDrawable() as BitmapDrawable).bitmap
 
                 val comprime = ByteArrayOutputStream()
 
-                bitmaps.compress(Bitmap.CompressFormat.JPEG, 25, comprime)
+                bitmaps.compress(Bitmap.CompressFormat.JPEG, 10, comprime)
 
-                /*  dataDBHelper.insertAvatar(baos.toByteArray()) */
-                var imdf: ByteArray = comprime.toByteArray()
-                imageList.add(imdf)
+               var imageByteArray: ByteArray = comprime.toByteArray()
+
+                imageList.add(imageByteArray)
                 cargacms.notifyDataSetChanged()
             }
         }
     }
+
+    private fun saveImageReview(idReview :Int,img: ByteArray) {
+
+        val encodedString:String =  Base64.getEncoder().encodeToString(img)
+
+        var images : Images = Images(
+            null,
+            encodedString,
+            idReview
+        )
+        val imagesService : ImagesService = RestEngine.getRestEngine().create(ImagesService::class.java)
+
+        val result: Call<Estatus> = imagesService.saveImage(images)
+
+        result.enqueue(object : Callback<Estatus> {
+            override fun onResponse(call: Call<Estatus>, response: Response<Estatus>) {
+                var resp = response.body()
+                if(resp!= null){
+                    println(resp.toString())
+
+                }
+            }
+
+            override fun onFailure(call: Call<Estatus>, t: Throwable) {
+                println(t.toString())
+            }
+
+        })
+    }
+
 }
