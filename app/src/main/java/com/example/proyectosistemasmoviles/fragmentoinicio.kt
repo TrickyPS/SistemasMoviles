@@ -26,6 +26,7 @@ import androidx.fragment.app.FragmentActivity
 import android.app.Activity
 import android.opengl.Visibility
 import android.view.ContextMenu
+import com.example.proyectosistemasmoviles.Modelos.test
 import kotlinx.android.synthetic.main.fragment_fragmentoinicio.*
 import java.io.Serializable
 
@@ -62,10 +63,10 @@ class fragmentoinicio : Fragment() {
                 var resp = response.body()
                 if(resp!= null){
 
-                  for(review in resp){
-                     reviewsList.add(review)
+                 for(review in resp){
+                    reviewsList.add(review)
 
-                  }
+                 }
                    homeAdapter.notifyDataSetChanged()
 
                 }

@@ -19,9 +19,6 @@ class RestEngine {
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
-            val gson = GsonBuilder()
-                .setLenient()
-              .create()
 
             val client =  OkHttpClient.Builder().addInterceptor(interceptor)
                 .connectTimeout(5, TimeUnit.MINUTES) // connect timeout
@@ -30,7 +27,7 @@ class RestEngine {
                 .build()
             val retrofit =  Retrofit.Builder()
                 .baseUrl("http://localhost:3000/controllers/") // tu url
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
 

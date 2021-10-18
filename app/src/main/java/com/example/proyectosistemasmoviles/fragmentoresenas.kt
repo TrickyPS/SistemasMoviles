@@ -73,8 +73,11 @@ var like2 = false
     }
 
     private fun enviarVoto(id_user: Int, id_review: Int) {
+        var intLike = 0
+        if(like)
+            intLike = 1
         val votoService : VotoService = RestEngine.getRestEngine().create(VotoService::class.java)
-        val result: Call<Estatus> = votoService.addVoto(Votos(id_user,id_review,like))
+        val result: Call<Estatus> = votoService.addVoto(Votos(id_user,id_review,intLike))
         //Para traer la info del review
         result.enqueue(object : Callback<Estatus> {
             override fun onResponse(call: Call<Estatus>, response: Response<Estatus>) {
@@ -132,6 +135,7 @@ var like2 = false
                     txtPremisa.text = resp.subtitulo;
                     txtTitleBook.text = resp.titulo;
                     txtResena.text = resp.contenido;
+                    countVotes.text = resp.votos.toString()
                     if(resp.isVoted == 1)
                         like = heartanimation(heart,R.raw.animacion,like)
                     //Para traer las imagenes del preview

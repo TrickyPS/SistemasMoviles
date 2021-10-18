@@ -1,9 +1,6 @@
 package com.example.proyectosistemasmoviles.services
 
-import com.example.proyectosistemasmoviles.Modelos.Review
-import com.example.proyectosistemasmoviles.Modelos.ReviewPreview
-import com.example.proyectosistemasmoviles.Modelos.ReviewPublic
-import com.example.proyectosistemasmoviles.Modelos.Usuario
+import com.example.proyectosistemasmoviles.Modelos.*
 import retrofit2.Call
 import retrofit2.http.*
 
