@@ -172,7 +172,7 @@ var like2 = false
             }
 
             override fun onFailure(call: Call<List<Images>>, t: Throwable) {
-                getAllImages(idReview)
+               // getAllImages(idReview)
             }
 
         })

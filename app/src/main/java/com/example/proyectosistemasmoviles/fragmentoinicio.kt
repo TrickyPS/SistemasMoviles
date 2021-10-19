@@ -63,18 +63,19 @@ class fragmentoinicio : Fragment() {
                 var resp = response.body()
                 if(resp!= null){
 
-                 for(review in resp){
-                    reviewsList.add(review)
+               // for(review in resp){
+              //     reviewsList.add(review)
 
-                 }
-                   homeAdapter.notifyDataSetChanged()
+               //  }
+                //   homeAdapter.notifyDataSetChanged()
 
                 }
                 progressBarInicio.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<List<ReviewPreview>>, t: Throwable) {
-                getAllPreviews()
+                println(t.toString())
+            //    getAllPreviews()
             }
 
         })
