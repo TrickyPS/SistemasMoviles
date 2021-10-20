@@ -2,6 +2,7 @@ package com.example.proyectosistemasmoviles
 
 import android.Manifest
 import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -10,40 +11,36 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat.requestPermissions
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.example.proyectosistemasmoviles.Modelos.Estatus
 import com.example.proyectosistemasmoviles.Modelos.Images
 import com.example.proyectosistemasmoviles.Modelos.Review
-import com.example.proyectosistemasmoviles.Modelos.Usuario
-import com.example.proyectosistemasmoviles.adapters.cargacms
+import com.example.proyectosistemasmoviles.adaptadores.cargacms
 import com.example.proyectosistemasmoviles.services.ImagesService
 import com.example.proyectosistemasmoviles.services.Reseñas
 import com.example.proyectosistemasmoviles.services.RestEngine
-import com.example.proyectosistemasmoviles.services.UserService
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import kotlinx.android.synthetic.main.dialog_image.*
 import kotlinx.android.synthetic.main.fragment_cms.*
 import kotlinx.android.synthetic.main.fragment_cms.view.*
-import kotlinx.android.synthetic.main.fragment_fragmentoperfil.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
-import java.nio.charset.StandardCharsets
 import java.util.*
 
 class fragmentocms : Fragment() {
     var pref: SharedPreferences? = null
     var id : Int? = null
     val imageList = mutableListOf<ByteArray>()
+    lateinit var dialog: BottomSheetDialog
 private lateinit var cargacms: cargacms
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,11 +49,12 @@ private lateinit var cargacms: cargacms
         val  pref = context?.getSharedPreferences("usuario", Context.MODE_PRIVATE)
         id = pref?.getInt("Id",0)
         var vista = inflater.inflate(R.layout.fragment_cms, container, false)
+        dialog = BottomSheetDialog(requireContext())
         cargacms = cargacms(vista.context,imageList)
         vista.reciclaim.adapter = cargacms
        vista.botoni.setOnClickListener{
+        showDialog()
 
-       changeImage()
 
        }
 
@@ -66,6 +64,26 @@ private lateinit var cargacms: cargacms
         }
         return vista
     }
+
+    private fun showDialog() {
+        dialog.setContentView(R.layout.dialog_image)
+        dialog.show()
+
+        dialog.imageButtonClose.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.btn_galeria.setOnClickListener {
+            changeImage(1)
+            dialog.dismiss()
+        }
+        dialog.btn_camara.setOnClickListener {
+            changeImage(2)
+            dialog.dismiss()
+        }
+
+    }
+
     private fun subirreseña(){
         val titulo: String = titulop.text.toString()
         val premisa: String = premisap.text.toString()
@@ -108,7 +126,7 @@ private lateinit var cargacms: cargacms
 
     }
 
-    private fun changeImage() {
+    private fun changeImage(case:Int) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             var boolDo: Boolean = false
@@ -129,12 +147,22 @@ private lateinit var cargacms: cargacms
             }
 
 
-            if (boolDo == true) {
+            if (boolDo == true && case == 1) {
                 pickImageFromGallery()
+            }
+
+            if (boolDo == true && case == 2) {
+                pickImageFromCamera()
             }
 
         }
 
+
+    }
+
+    private fun pickImageFromCamera() {
+        var cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(cameraIntent, 1002)
     }
 
     private fun pickImageFromGallery() {
@@ -187,6 +215,16 @@ private lateinit var cargacms: cargacms
                 imageList.add(imageByteArray)
                 cargacms.notifyDataSetChanged()
             }
+
+            if (requestcode == 1002) {
+
+                val photo =  data?.extras?.get("data") as Bitmap
+                val comprime = ByteArrayOutputStream()
+                photo.compress(Bitmap.CompressFormat.JPEG, 25, comprime)
+                imageList.add(comprime.toByteArray())
+                cargacms?.notifyDataSetChanged()
+            }
+
         }
     }
 

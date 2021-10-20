@@ -1,4 +1,4 @@
-package com.example.proyectosistemasmoviles.adapters
+package com.example.proyectosistemasmoviles.adaptadores
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,8 +10,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectosistemasmoviles.R
 import kotlinx.android.synthetic.main.item_list_cms.view.*
-import java.io.ByteArrayOutputStream
-import java.util.*
 
 
 class cargacms(private val context: Context, private val imageList: List<ByteArray>): RecyclerView.Adapter<cargacms.ImagesViewHolder>() {

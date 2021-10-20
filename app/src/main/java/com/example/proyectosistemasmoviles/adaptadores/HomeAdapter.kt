@@ -1,4 +1,4 @@
-package com.example.proyectosistemasmoviles.adapters
+package com.example.proyectosistemasmoviles.adaptadores
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -7,15 +7,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectosistemasmoviles.Modelos.ReviewPreview
 import com.example.proyectosistemasmoviles.R
-import com.example.proyectosistemasmoviles.fragmentocms
 import com.example.proyectosistemasmoviles.fragmentoresenas
-import kotlinx.android.synthetic.main.item_data.view.*
 import kotlinx.android.synthetic.main.item_inicio.view.*
-import kotlinx.android.synthetic.main.item_list_cms.view.*
 import java.util.*
 import androidx.appcompat.app.AppCompatActivity
 
@@ -35,7 +31,8 @@ class HomeAdapter(private val context: Context, private val reviewsList: List<Re
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         var view = holder.itemView
         //val stream = reviewsList[position].image
-        val imgEncode = Base64.getDecoder().decode(reviewsList[position].image)
+        //val strImage:String =  reviewsList[0].image!!.replace("data:image/png;base64,","")
+        val imgEncode = Base64.getDecoder().decode( reviewsList[position].image)
         val imageBitmap:Bitmap = BitmapFactory.decodeByteArray(imgEncode, 0, imgEncode.size)
         view.imgReview.setImageBitmap(imageBitmap)
         view.tituloReview.text = reviewsList[position].titulo

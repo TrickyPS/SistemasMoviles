@@ -19,6 +19,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Handler
+import android.provider.MediaStore
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.checkSelfPermission
 import com.airbnb.lottie.LottieAnimationView
@@ -129,19 +130,15 @@ cierras()
 
 
             if(boolDo == true){
-                pickImageFromGallery()
+                pickImageFromCamera()
             }
 
         }
 
     }
-    private fun pickImageFromGallery() {
-        //Abrir la galería
-        val intent  =  Intent()
-        intent.setAction(Intent.ACTION_PICK);
-        intent.type = "image/*"
-        startActivityForResult(intent, 1000)
-
+    private fun pickImageFromCamera() {
+        var cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(cameraIntent, 1002)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -150,7 +147,7 @@ cierras()
                 if (grantResults.size >0 && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED){
                     //permission from popup granted
-                    pickImageFromGallery()
+                    pickImageFromCamera()
                 }
                 else{
                     //PERMISO DENEGADO
@@ -166,19 +163,15 @@ cierras()
 
         if (resultcode == Activity.RESULT_OK) {
 
-            if(requestcode == 1000) {
+            if(requestcode == 1002) {
 
-                imagenPerfil.setImageURI(data?.data)
-
-              val bitmaps = (imagenPerfil.getDrawable() as BitmapDrawable).bitmap
-
+                val photo =  data?.extras?.get("data") as Bitmap
+                imagenPerfil.setImageBitmap(photo)
                 val comprime = ByteArrayOutputStream()
+                photo.compress(Bitmap.CompressFormat.JPEG, 25, comprime)
+                saveImageUser(comprime.toByteArray())
 
-                bitmaps.compress(Bitmap.CompressFormat.JPEG, 10, comprime)
 
-               /*  dataDBHelper.insertAvatar(baos.toByteArray()) */
-               var imdf: ByteArray = comprime.toByteArray()
-                saveImageUser(imdf)
             }
         }
     }

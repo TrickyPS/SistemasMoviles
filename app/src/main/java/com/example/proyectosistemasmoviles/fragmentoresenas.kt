@@ -7,23 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.airbnb.lottie.LottieAnimationView
-import com.airbnb.lottie.animation.keyframe.MaskKeyframeAnimation
 import kotlinx.android.synthetic.main.fragment_fragmentoresenas.*
 import kotlinx.android.synthetic.main.fragment_fragmentoresenas.view.*
-import android.R.raw
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.app.Activity
+import android.app.Dialog
 import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.widget.Toast
+import android.view.inputmethod.InputMethodManager
 import com.example.proyectosistemasmoviles.Modelos.*
+import com.example.proyectosistemasmoviles.adaptadores.ComentariosAdapter
 import com.example.proyectosistemasmoviles.services.*
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.synnapps.carouselview.ImageListener
-import com.synnapps.carouselview.ViewListener
+import kotlinx.android.synthetic.main.dialog_comentario.*
+import kotlinx.android.synthetic.main.dialog_image.*
+import kotlinx.android.synthetic.main.fragment_fragmentoinicio.view.*
 import kotlinx.android.synthetic.main.item_list_cms.*
-import okhttp3.internal.wait
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,8 +35,13 @@ import java.util.*
 class fragmentoresenas : Fragment() {
 
     var carouselImages=  mutableListOf<Bitmap>()
-    var carouselTitle:String? = null
     var like = false
+
+    var comentariosList = mutableListOf<Comentarios>()
+    private lateinit var comentariosAdapter: ComentariosAdapter
+    lateinit var dialog: BottomSheetDialog
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,28 +56,79 @@ class fragmentoresenas : Fragment() {
 
         val  pref = context?.getSharedPreferences("usuario", Context.MODE_PRIVATE)
         val id = pref?.getInt("Id",0)
+
+
+
+        comentariosAdapter = ComentariosAdapter(vista.context,comentariosList)
+        vista.rv_comentarios.adapter = comentariosAdapter
         getReview(id_review!!,id!!);
 
-
+        getComentarios(id_review)
 
         vista.heart.setOnClickListener {
 
             like = heartanimation(heart,R.raw.animacion,like)
             enviarVoto(id,id_review)
         }
-var like2 = false
+        var like2 = false
         vista.botons.setOnClickListener {
-            val comentario = editTextTextPersonName5.text
-            if(!comentario.isEmpty()) {
+
                 like2 = heartanimation2(yes, R.raw.anim2, like2)
-                enviarComentario(id, id_review,comentario.toString())
-            }
+
         }
 
-
+        vista.editTextTextPersonName5.setOnClickListener {
+            showDialog(id_review,id)
+        }
 
         return vista
     }
+
+    private fun showDialog(id_review: Int,id:Int) {
+        dialog = BottomSheetDialog(requireContext())
+        dialog.setContentView(R.layout.dialog_comentario)
+        dialog.show()
+
+        dialog.edittextCom.requestFocus()
+        var imm: InputMethodManager =
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+
+        dialog.imageButton.setOnClickListener {
+            val comentario = dialog.edittextCom.text
+            if(!comentario.isEmpty()) {
+
+                enviarComentario(id, id_review,comentario.toString())
+                dialog.dismiss()
+            }
+        }
+    }
+
+
+
+    private fun getComentarios(idReview: Int) {
+        val comentariosService : ComentariosService = RestEngine.getRestEngine().create(ComentariosService::class.java)
+
+        val result: Call<List<Comentarios>> = comentariosService.getComentarios(idReview)
+        //Para traer la info del review
+        result.enqueue(object : Callback<List<Comentarios>> {
+            override fun onResponse(call: Call<List<Comentarios>>, response: Response<List<Comentarios>>) {
+                var resp = response.body()
+                if(resp!= null){
+                   for(comentario in resp){
+                       comentariosList.add(comentario)
+                       comentariosAdapter.notifyDataSetChanged()
+                   }
+                }
+            }
+
+            override fun onFailure(call: Call<List<Comentarios>>, t: Throwable) {
+                println(t.toString())
+            }
+
+        })
+    }
+
 
     private fun enviarVoto(id_user: Int, id_review: Int) {
         var intLike = 0
@@ -104,7 +162,8 @@ var like2 = false
                 override fun onResponse(call: Call<Estatus>, response: Response<Estatus>) {
                     var resp = response.body()
                     if(resp!= null){
-                        //TODO agregar mensaje a lista de comentarios-adapter
+                      comentariosList.clear()
+                        getComentarios(id_review)
                     }
                 }
 
@@ -226,6 +285,10 @@ var like2 = false
 
         return !like
     }
+
+
+
+
 }
 
 

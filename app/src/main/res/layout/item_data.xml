@@ -19,48 +19,51 @@
             android:layout_height="60dp">
 
             <ImageView
-                android:id="@+id/imgHome"
+                android:id="@+id/imgComentario"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:background="@drawable/alfons_morales_ylswjsy7stw_unsplash"
                 android:foreground="@drawable/imagenredonda"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/alfons_morales_ylswjsy7stw_unsplash" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/txt_usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="76dp"
+                android:layout_marginStart="8dp"
                 android:text="Pedro Angel "
-                app:layout_constraintEnd_toStartOf="@+id/textView20"
+                app:layout_constraintBottom_toTopOf="@+id/txt_comentario"
+                app:layout_constraintStart_toEndOf="@+id/imgComentario"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/fechaComentario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:text="10:24 pm 20/09/2021"
+                app:layout_constraintBottom_toTopOf="@+id/txt_comentario"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/txt_comentario"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="2dp"
                 android:text="La verdad a mi me gusto mucho todo lo que hicimos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imgHome"
+                app:layout_constraintStart_toEndOf="@+id/imgComentario"
                 app:layout_constraintTop_toBottomOf="@+id/textView20"
                 app:layout_constraintVertical_bias="0.023" />
 

@@ -10,4 +10,6 @@ interface ComentariosService {
     @POST("comentarios.php")
     fun addComentario(@Body comment: Comentarios): Call<Estatus>
 
+    @GET("comentarios.php")
+    fun getComentarios(@Query("id")id:Int): Call<List<Comentarios>>
 }

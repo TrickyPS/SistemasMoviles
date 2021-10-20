@@ -21,14 +21,16 @@
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/activity_sign_in.xml" value="0.1453125" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/activity_sign_up.xml" value="0.18" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_cms.xml" value="0.18" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/dialog_comentario.xml" value="0.33" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/dialog_image.xml" value="0.25" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_cms.xml" value="0.33" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentofavoritos.xml" value="0.1" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoinicio.xml" value="0.33" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoperfil.xml" value="0.33" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoresenas.xml" value="0.67" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoresenas.xml" value="0.5" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/fragment_mis_resenas.xml" value="0.1" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_carousel.xml" value="0.10677083333333333" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_data.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_data.xml" value="0.33" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_data2.xml" value="0.1" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/layout/item_inicio.xml" value="0.1" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/SistemasMoviles/app/src/main/res/xml/network_security_config.xml" value="0.1" />
