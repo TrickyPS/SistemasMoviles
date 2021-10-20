@@ -41,7 +41,7 @@ class fragmentoresenas : Fragment() {
     private lateinit var comentariosAdapter: ComentariosAdapter
     lateinit var dialog: BottomSheetDialog
 
-
+    lateinit var imm: InputMethodManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +57,8 @@ class fragmentoresenas : Fragment() {
         val  pref = context?.getSharedPreferences("usuario", Context.MODE_PRIVATE)
         val id = pref?.getInt("Id",0)
 
-
+        imm=
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
         comentariosAdapter = ComentariosAdapter(vista.context,comentariosList)
         vista.rv_comentarios.adapter = comentariosAdapter
@@ -90,15 +91,20 @@ class fragmentoresenas : Fragment() {
         dialog.show()
 
         dialog.edittextCom.requestFocus()
-        var imm: InputMethodManager =
-            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+        var viewi = requireActivity().currentFocus
+
+        if (viewi == null) {
+            viewi = View(activity)
+        }
+
+        //imm.showSoftInput(dialog.edittextCom,InputMethodManager.SHOW_FORCED)
+
 
         dialog.imageButton.setOnClickListener {
             val comentario = dialog.edittextCom.text
             if(!comentario.isEmpty()) {
-
                 enviarComentario(id, id_review,comentario.toString())
+                imm.hideSoftInputFromWindow(view?.windowToken, 0)
                 dialog.dismiss()
             }
         }
@@ -141,7 +147,11 @@ class fragmentoresenas : Fragment() {
             override fun onResponse(call: Call<Estatus>, response: Response<Estatus>) {
                 var resp = response.body()
                 if(resp!= null){
-                   println(resp.toString())
+                   if(intLike == 0){
+                       countVotes.text = (Integer.parseInt(countVotes.text.toString()) - 1).toString()
+                   }else{
+                       countVotes.text = (Integer.parseInt(countVotes.text.toString()) + 1).toString()
+                   }
                 }
             }
 
