@@ -36,6 +36,8 @@ class fragmentoresenas : Fragment() {
 
     var carouselImages=  mutableListOf<Bitmap>()
     var like = false
+    var like2 = false
+    var ismark = false
 
     var comentariosList = mutableListOf<Comentarios>()
     private lateinit var comentariosAdapter: ComentariosAdapter
@@ -71,10 +73,12 @@ class fragmentoresenas : Fragment() {
             like = heartanimation(heart,R.raw.animacion,like)
             enviarVoto(id,id_review)
         }
-        var like2 = false
+
         vista.botons.setOnClickListener {
 
                 like2 = heartanimation2(yes, R.raw.anim2, like2)
+                ismark = markAnimate(botons,R.raw.bookmark,ismark)
+                enviarFavorito(id,id_review)
 
         }
 
@@ -135,6 +139,23 @@ class fragmentoresenas : Fragment() {
         })
     }
 
+    private fun enviarFavorito(id_user: Int, id_review: Int){
+        var intmark = 0
+        if(ismark)
+            intmark = 1
+        val favoritoService : FavoritosService = RestEngine.getRestEngine().create(FavoritosService::class.java)
+        val result: Call<Estatus> = favoritoService.addFavorito(Favoritos(id_user,id_review,intmark))
+        result.enqueue(object : Callback<Estatus> {
+            override fun onResponse(call: Call<Estatus>, response: Response<Estatus>) {
+                println(response.toString())
+            }
+
+            override fun onFailure(call: Call<Estatus>, t: Throwable) {
+                println(t.toString())
+            }
+
+        })
+    }
 
     private fun enviarVoto(id_user: Int, id_review: Int) {
         var intLike = 0
@@ -207,6 +228,10 @@ class fragmentoresenas : Fragment() {
                     countVotes.text = resp.votos.toString()
                     if(resp.isVoted == 1)
                         like = heartanimation(heart,R.raw.animacion,like)
+                    if(resp.check == 1) {
+                        ismark = markAnimate(botons, R.raw.bookmark, ismark)
+                        like2 = heartanimation2(yes, R.raw.anim2, like2)
+                    }
                     //Para traer las imagenes del preview
                     getAllImages(id_review)
                 }
@@ -294,6 +319,31 @@ class fragmentoresenas : Fragment() {
         }
 
         return !like
+    }
+
+    private fun markAnimate(imageView: LottieAnimationView,
+                                animation: Int,
+                                ismark: Boolean) : Boolean {
+        if (!ismark) {
+            imageView.setAnimation(animation)
+            imageView.playAnimation()
+        } else {
+            imageView.animate()
+                .alpha(0f)
+                .setDuration(300)
+                .setListener(object : AnimatorListenerAdapter() {
+
+                    override fun onAnimationEnd(animator: Animator) {
+
+                        imageView.setImageResource(R.drawable.ic_baseline_bookmark_border_24)
+                        imageView.alpha = 1f
+                    }
+
+                })
+
+        }
+
+        return !ismark
     }
 
 

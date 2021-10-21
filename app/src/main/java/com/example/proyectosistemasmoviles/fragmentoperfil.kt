@@ -21,6 +21,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Handler
 import android.provider.MediaStore
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.checkSelfPermission
 import com.airbnb.lottie.LottieAnimationView
 import com.example.proyectosistemasmoviles.Modelos.Estatus
@@ -52,6 +53,29 @@ class fragmentoperfil : Fragment() {
         var email = pref?.getString("Email","");
         var image = pref?.getString("Image","");
 
+        vista.buttonFavoritos.setOnClickListener {
+            val activity = context as AppCompatActivity
+            val frag = fragmentofavoritos()
+            val args = Bundle()
+            frag.setArguments(args)
+            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentogeneral, frag).addToBackStack(null).commit();
+        }
+
+        vista.button6.setOnClickListener {
+            val activity = context as AppCompatActivity
+            val frag = fragment_mis_resenas()
+            val args = Bundle()
+            frag.setArguments(args)
+            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentogeneral, frag).addToBackStack(null).commit();
+        }
+
+        vista.button5.setOnClickListener {
+            val activity = context as AppCompatActivity
+            val frag = fragmentocontrasena()
+            val args = Bundle()
+            frag.setArguments(args)
+            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentogeneral, frag).addToBackStack(null).commit();
+        }
 
         vista.cierraSesion.setOnClickListener {
 cierras()

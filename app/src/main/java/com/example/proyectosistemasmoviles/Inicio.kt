@@ -35,7 +35,8 @@ class Inicio : AppCompatActivity() {
         }
 
         btnRegresar.setOnClickListener {
-            val frag = fragmentoinicio()
+
+           val frag = fragmentoinicio()
             val args = Bundle()
             frag.setArguments(args)
             val transaction = supportFragmentManager.beginTransaction()
