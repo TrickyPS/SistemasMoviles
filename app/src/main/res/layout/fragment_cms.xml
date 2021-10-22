@@ -60,7 +60,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/reciclaim" />
 
             <EditText
-                android:id="@+id/titulop"
+                android:id="@+id/contravieja"
                 style="@style/Widget.AppCompat.EditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -82,10 +82,10 @@
                 android:text="Premisa"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titulop" />
+                app:layout_constraintTop_toBottomOf="@+id/contravieja" />
 
             <EditText
-                android:id="@+id/premisap"
+                android:id="@+id/contranueva"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -106,7 +106,7 @@
                 android:text="Reseña"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/premisap" />
+                app:layout_constraintTop_toBottomOf="@+id/contranueva" />
 
             <EditText
                 android:id="@+id/resenap"

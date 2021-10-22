@@ -2,7 +2,6 @@ package com.example.proyectosistemasmoviles
 
 import android.Manifest
 import android.app.Activity
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -85,8 +84,8 @@ private lateinit var cargacms: cargacms
     }
 
     private fun subirreseña(){
-        val titulo: String = titulop.text.toString()
-        val premisa: String = premisap.text.toString()
+        val titulo: String = contravieja.text.toString()
+        val premisa: String = contranueva.text.toString()
         val descripcion: String= resenap.text.toString()
 
         if(titulo.isEmpty() || premisa.isEmpty() || descripcion.isEmpty()){
@@ -109,8 +108,8 @@ private lateinit var cargacms: cargacms
                         //Limpia el formulario
                         imageList.clear();
                         cargacms.notifyDataSetChanged()
-                        titulop.setText("")
-                        premisap.setText("")
+                        contravieja.setText("")
+                        contranueva.setText("")
                         resenap.setText("")
 
                     }

@@ -1,5 +1,6 @@
 package com.example.proyectosistemasmoviles.services
 
+import com.example.proyectosistemasmoviles.Modelos.Cambiar
 import com.example.proyectosistemasmoviles.Modelos.Estatus
 import com.example.proyectosistemasmoviles.Modelos.Usuario
 import retrofit2.Call
@@ -16,4 +17,6 @@ interface UserService {
     @PUT("UserController.php")
     fun AgregarImagen(@Body user: Usuario, @Query("id") id: Int?): Call<Usuario>
 
+    @PUT("contra.php")
+    fun Cambiar(@Body user: Cambiar, @Query("id") id: Int?): Call<Estatus>
 }

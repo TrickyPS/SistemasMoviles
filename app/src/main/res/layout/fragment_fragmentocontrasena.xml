@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="Contraseña nueva"
-            app:layout_constraintBottom_toTopOf="@+id/premisap"
+            app:layout_constraintBottom_toTopOf="@+id/contranueva"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.334"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,14 +25,14 @@
             app:layout_constraintVertical_bias="0.986" />
 
         <EditText
-            android:id="@+id/titulop"
+            android:id="@+id/contravieja"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="52dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
-            app:layout_constraintBottom_toTopOf="@+id/premisap"
+            app:layout_constraintBottom_toTopOf="@+id/contranueva"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/contrasenn"
             android:layout_width="230dp"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
@@ -57,7 +57,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
-            android:id="@+id/premisap"
+            android:id="@+id/contranueva"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
@@ -65,7 +65,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
-            app:layout_constraintBottom_toTopOf="@+id/button8"
+            app:layout_constraintBottom_toTopOf="@+id/contrasenn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent" />
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="Contraseña anterior"
-            app:layout_constraintBottom_toTopOf="@+id/titulop"
+            app:layout_constraintBottom_toTopOf="@+id/contravieja"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.348"
             app:layout_constraintStart_toStartOf="parent" />
