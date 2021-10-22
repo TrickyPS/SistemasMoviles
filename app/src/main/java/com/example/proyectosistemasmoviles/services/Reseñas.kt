@@ -17,4 +17,9 @@ interface Reseñas {
 
     @GET("review.php")
     fun getReviewsCreatedById(@Query("id_user")id_user:Int?): Call<List<ReviewPreview>>
+
+    @GET("buscar.php")
+    fun Buscar(): Call<List<buscarrM>>
+
+
 }
