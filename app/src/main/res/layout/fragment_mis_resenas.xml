@@ -33,6 +33,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15"
-            tools:listitem="@layout/item_inicio" />
+            tools:listitem="@layout/resenasm" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

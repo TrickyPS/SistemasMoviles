@@ -11,12 +11,14 @@ import kotlinx.android.synthetic.main.fragment_fragmentoresenas.*
 import kotlinx.android.synthetic.main.fragment_fragmentoresenas.view.*
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import com.example.proyectosistemasmoviles.Modelos.*
 import com.example.proyectosistemasmoviles.adaptadores.ComentariosAdapter
 import com.example.proyectosistemasmoviles.services.*
@@ -44,14 +46,17 @@ class fragmentoresenas : Fragment() {
     lateinit var dialog: BottomSheetDialog
 
     lateinit var imm: InputMethodManager
-
+    @SuppressLint("WrongThread")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
+
         // Inflate the layout for this fragment
         var vista = inflater.inflate(R.layout.fragment_fragmentoresenas, container, false)
-        var id_review:Int? = null
+            try { var id_review:Int? = null
         val bundle = this.arguments
         if (bundle != null)
             id_review= bundle.getInt("id")
@@ -59,8 +64,7 @@ class fragmentoresenas : Fragment() {
         val  pref = context?.getSharedPreferences("usuario", Context.MODE_PRIVATE)
         val id = pref?.getInt("Id",0)
 
-        imm=
-            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm=requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
         comentariosAdapter = ComentariosAdapter(vista.context,comentariosList)
         vista.rv_comentarios.adapter = comentariosAdapter
@@ -85,7 +89,11 @@ class fragmentoresenas : Fragment() {
         vista.editTextTextPersonName5.setOnClickListener {
             showDialog(id_review,id)
         }
+            }catch (palabra: Exception){
 
+
+                Toast.makeText(context, "regresando...", Toast.LENGTH_SHORT).show()
+            }
         return vista
     }
 

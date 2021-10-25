@@ -18,12 +18,13 @@
         >
         <activity
             android:name=".Inicio"
-
+            android:exported="true"
             android:screenOrientation="portrait">
 
             </activity>
         <activity
             android:name=".SignUp"
+            android:exported="true"
             android:screenOrientation="portrait">
 
         </activity>

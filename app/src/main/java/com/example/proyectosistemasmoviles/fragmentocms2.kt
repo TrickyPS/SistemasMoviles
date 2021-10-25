@@ -37,7 +37,7 @@ import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class fragmentocms : Fragment() {
+class fragmentocms2 : Fragment() {
     var pref: SharedPreferences? = null
     var id : Int? = null
     var id_update : Int? = null
@@ -53,8 +53,22 @@ private lateinit var cargacms: cargacms
     ): View? {
         val  pref = context?.getSharedPreferences("usuario", Context.MODE_PRIVATE)
         id = pref?.getInt("Id",0)
-        var vista = inflater.inflate(R.layout.fragment_cms, container, false)
+        var vista = inflater.inflate(R.layout.fragment_cms2, container, false)
 
+        val bundle = this.arguments
+        if (bundle != null){
+
+            id_update  = bundle.getInt("id")
+            if(id_update != null){
+                tituloU    = bundle.getString("titulo")
+                subtituloU = bundle.getString("resena")
+                contenidoU = bundle.getString("contenido")
+                vista.contravieja.setText(tituloU)
+                vista.contranueva.setText(subtituloU)
+                vista.resenap.setText(contenidoU)
+            }
+
+        }
 
         dialog = BottomSheetDialog(requireContext())
         cargacms = cargacms(vista.context,imageList)
@@ -64,11 +78,16 @@ private lateinit var cargacms: cargacms
 
 
        }
-   vista.botonsubir.setOnClickListener{
 
-       subirreseña()
-   }
+        vista.botonsubir.setOnClickListener {
 
+            if (bundle != null && id_update != null){
+                subirreseñaU()
+            }else{
+                subirreseña()
+            }
+
+        }
 
         return vista
     }
@@ -125,6 +144,56 @@ private lateinit var cargacms: cargacms
                 }
 
                 override fun onFailure(call: Call<Review>, t: Throwable) {
+                    println(t.toString())
+                }
+
+            })
+
+        }
+
+    }
+
+
+
+
+
+    private fun subirreseñaU(){
+        val titulo: String = contravieja.text.toString()
+        val premisa: String = contranueva.text.toString()
+        val descripcion: String= resenap.text.toString()
+
+        if(titulo.isEmpty() || premisa.isEmpty() || descripcion.isEmpty()){
+            Toast.makeText(this.context, "Llene todos los campos", Toast.LENGTH_LONG).show()
+        }else{
+            val resena: Reseñas = RestEngine.getRestEngine().create(Reseñas::class.java)
+            val result: Call<Modificar> = resena.ModificarU(
+                Modificar(
+                    id_update,titulo,premisa,descripcion
+                )
+            )
+            result.enqueue(object : Callback<Modificar> {
+                override fun onResponse(call: Call<Modificar>, response: Response<Modificar>) {
+                    var resp = response.body()
+                    if(resp!= null){
+
+                        for( image in imageList ){
+                            saveImageReview(id_update!!,image)
+                        }
+                        //Limpia el formulario
+                        imageList.clear();
+                        cargacms.notifyDataSetChanged()
+                        contravieja.setText("")
+                        contranueva.setText("")
+                        resenap.setText("")
+                        val activity = context as AppCompatActivity
+                        val frag =  fragment_mis_resenas()
+                        val args = Bundle()
+                        frag.setArguments(args)
+                        activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentogeneral, frag).addToBackStack(null).commit()
+                    }
+                }
+
+                override fun onFailure(call: Call<Modificar>, t: Throwable) {
                     println(t.toString())
                 }
 

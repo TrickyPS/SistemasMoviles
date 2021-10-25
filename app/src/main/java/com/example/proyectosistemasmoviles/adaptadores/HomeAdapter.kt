@@ -50,6 +50,7 @@ class HomeAdapter(private val context: Context, private val reviewsList: List<Re
            // transaction.commit()
             activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentogeneral, frag).addToBackStack(null).commit();
         }
+
         //holder.itemView.textolista.text = "Recurso " + (position + 1) + " Listo"
        // val bmp = BitmapFactory.decodeByteArray(imageList[position], 0, imageList[position].size)
        // val image: ImageView = holder.itemView.imagenlista as ImageView

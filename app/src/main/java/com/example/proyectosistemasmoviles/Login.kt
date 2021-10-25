@@ -20,7 +20,7 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+//TODO HACER AQUI LODE SE REGISTRO CORRECTAMENTE
 
         video.setOnCompletionListener(OnCompletionListener {
 
@@ -56,6 +56,14 @@ if(uds != 0){
         video.resume()
         video.requestFocus()
         video.start()
+
+        var uds =  pref?.getInt("Id",0)
+        if(uds != 0){
+
+            muestraInicio()
+
+        }
+
     }
     private fun muestraInicio() {
         val activityHome = Intent(this, Inicio::class.java)

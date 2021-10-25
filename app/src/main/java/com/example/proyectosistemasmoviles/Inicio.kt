@@ -1,4 +1,5 @@
 package com.example.proyectosistemasmoviles
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -17,7 +18,9 @@ import java.util.*
 class Inicio : AppCompatActivity() {
     val reviewsList = mutableListOf<ReviewPreview>()
     var pref: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
         AppBarConfiguration(setOf(R.id.fragmentoinicio,R.id.fragmentobuscar,R.id.fragmentoperfil))
@@ -36,7 +39,7 @@ class Inicio : AppCompatActivity() {
 
         btnRegresar.setOnClickListener {
 
-           val frag = fragmentoinicio()
+           val frag = fragmentoresenas()
             val args = Bundle()
             frag.setArguments(args)
             val transaction = supportFragmentManager.beginTransaction()

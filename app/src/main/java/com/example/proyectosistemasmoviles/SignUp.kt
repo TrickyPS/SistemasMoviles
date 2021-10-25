@@ -87,6 +87,7 @@ class SignUp : AppCompatActivity() {
                             //TODO AQUI COLOCAR EL CODIGO
 
                              var activityLogin = Intent(this@SignUp,Login::class.java)
+                            activityLogin.putExtra("Registrar", "hola")
                             startActivity(activityLogin)
                         }
                     }

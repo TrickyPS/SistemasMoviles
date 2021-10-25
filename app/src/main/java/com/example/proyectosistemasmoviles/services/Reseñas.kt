@@ -21,5 +21,10 @@ interface Reseñas {
     @GET("buscar.php")
     fun Buscar(): Call<List<buscarrM>>
 
+    @DELETE("borrarReview.php")
+    fun Eliminar(@Query("idReview")idReview: Int?) : Call<elimina>
+
+    @POST("borrarReview.php")
+    fun ModificarU(@Body user: Modificar): Call <Modificar>
 
 }

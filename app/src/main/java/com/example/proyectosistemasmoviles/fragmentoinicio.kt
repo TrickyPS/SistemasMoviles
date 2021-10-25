@@ -24,6 +24,8 @@ class fragmentoinicio : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
+            reviewsList.clear()
+
             // Inflate the layout for this fragment
             var vista = inflater.inflate(R.layout.fragment_fragmentoinicio, container, false)
             homeAdapter = HomeAdapter(vista.context,reviewsList)
@@ -46,6 +48,7 @@ class fragmentoinicio : Fragment() {
 
 
     private fun getAllPreviews() {
+
         val resenasService : Reseñas = RestEngine.getRestEngine().create(Reseñas::class.java)
 
         val result: Call<List<ReviewPreview>> = resenasService.getAllReviews()
