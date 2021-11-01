@@ -58,11 +58,16 @@ class fragmentoinicio : Fragment() {
                 var resp = response.body()
                 if(resp!= null){
 
-                for(review in resp){
+/*
+* LINEA 435 ahi aparece como truncar*/
+                    DBApplication.dataDBHelper.truncarpublicacion()
+                    for(review in resp){
                    reviewsList.add(review)
-
+/* AQUI SE MANDA AL DB HELPER PARA INSERTAR EN LA TABLA */
+                        DBApplication.dataDBHelper.insertPublicationPreview(review)
                  }
                   homeAdapter.notifyDataSetChanged()
+
 
                 }
                 progressBarInicio.visibility = View.GONE
@@ -71,7 +76,10 @@ class fragmentoinicio : Fragment() {
 
             override fun onFailure(call: Call<List<ReviewPreview>>, t: Throwable) {
                 println(t.toString())
-            //    getAllPreviews()
+            //    getAllPreviews() CUANDO NO HAYA INTERNET TRAIGO TODA LA TABLA
+                reviewsList.addAll(DBApplication.dataDBHelper.getPublicationPreview())
+                homeAdapter.notifyDataSetChanged()
+
             }
 
         })

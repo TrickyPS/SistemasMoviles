@@ -1,9 +1,11 @@
 package com.example.proyectosistemasmoviles.adaptadores
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,11 +63,7 @@ class HomeAdapterMy(private val context: Context, private val reviewsList: List<
             activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentogeneral, frag).addToBackStack(null).commit()
         }
         view.eliminar.setOnClickListener {
-
             Eliminar(temp)
-            Toast.makeText(context, "ola amigos", Toast.LENGTH_SHORT).show()
-
-
         }
 
         view.Modificar.setOnClickListener {
@@ -102,9 +100,14 @@ class HomeAdapterMy(private val context: Context, private val reviewsList: List<
                 override fun onResponse(call: Call<elimina>, response: Response<elimina>) {
                     val item = response.body()
                     if (item != null) {
-                        val activity = context as AppCompatActivity
-                        val frag = fragment_mis_resenas()
-                        activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentogeneral, frag).addToBackStack(null).commit();
+                        Toast.makeText(context, "Se elimino correctamente", Toast.LENGTH_LONG)
+                            .show()
+                        Handler().postDelayed({
+                            val activity = context as AppCompatActivity
+                            val frag = fragment_mis_resenas()
+                            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentogeneral, frag).addToBackStack(null).commit();
+                        }, 1200)
+
 
 
                     } else {

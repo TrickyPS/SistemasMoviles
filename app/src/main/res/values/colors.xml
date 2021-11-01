@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="fondotransparente">#00F44336</color>
+    <color name="fonfof">#25373E</color>
+    <color name="colorfoto2">#27272B</color>
+    <color name="fofin">#97040404</color>
+    <color name="fofin2">#040404</color>
 </resources>

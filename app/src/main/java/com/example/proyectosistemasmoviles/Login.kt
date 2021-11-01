@@ -17,6 +17,7 @@ import android.media.MediaPlayer.OnCompletionListener
 
 class Login : AppCompatActivity() {
     var pref: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -35,7 +36,6 @@ class Login : AppCompatActivity() {
         video.start()
 
         pref = getSharedPreferences("usuario",MODE_PRIVATE);
-
       var uds =  pref?.getInt("Id",0)
 if(uds != 0){
 
@@ -103,7 +103,7 @@ if(uds != 0){
                         //TODO AQUI COLOCAR EL CODIGO
 
                         val id: Int = item.id.toString().toInt()
-                        val nombre: String = item.nombre.toString()
+                        val nombre:  String = item.nombre.toString()
                         val apellido: String = item.apellido.toString()
                         val email: String = item.email.toString()
                         val password: String = item.password.toString()

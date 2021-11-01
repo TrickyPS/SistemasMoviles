@@ -5,13 +5,16 @@
     <item
         android:id="@+id/fragmentoinicio"
         android:icon="@drawable/ic_baseline_home_24"
+        android:iconTint="@color/white"
         android:title="Inicio" />
     <item
         android:id="@+id/fragmentobuscar"
         android:icon="@drawable/ic_baseline_search_24"
+        android:iconTint="@color/white"
         android:title="Buscar" />
     <item
         android:id="@+id/fragmentoperfil"
         android:icon="@drawable/ic_baseline_person_24"
+        android:iconTint="@color/white"
         android:title="Perfil" />
 </menu>

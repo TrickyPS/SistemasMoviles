@@ -1,7 +1,7 @@
 package com.example.proyectosistemasmoviles.Modelos
 
-data class Review (
-    var id:Int? = null,
+data class Review(
+    var id: Int? = null,
     var titulo:String? =null,
     var subtitulo:String? =null,
     var contenido:String?=null,

@@ -17,6 +17,8 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Base64.URL_SAFE
+import android.util.Base64.decode
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.example.proyectosistemasmoviles.Modelos.*
@@ -27,6 +29,7 @@ import com.synnapps.carouselview.ImageListener
 import kotlinx.android.synthetic.main.dialog_comentario.*
 import kotlinx.android.synthetic.main.dialog_image.*
 import kotlinx.android.synthetic.main.fragment_fragmentoinicio.view.*
+import kotlinx.android.synthetic.main.fragment_fragmentoperfil.*
 import kotlinx.android.synthetic.main.item_list_cms.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -59,7 +62,7 @@ class fragmentoresenas : Fragment() {
             try { var id_review:Int? = null
         val bundle = this.arguments
         if (bundle != null)
-            id_review= bundle.getInt("id")
+            id_review = bundle.getInt("id")
 
         val  pref = context?.getSharedPreferences("usuario", Context.MODE_PRIVATE)
         val id = pref?.getInt("Id",0)
@@ -141,7 +144,8 @@ class fragmentoresenas : Fragment() {
             }
 
             override fun onFailure(call: Call<List<Comentarios>>, t: Throwable) {
-                println(t.toString())
+
+
             }
 
         })
@@ -245,8 +249,16 @@ class fragmentoresenas : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<ReviewPublic>, t: Throwable) {
-                println(t.toString())
+            override fun onFailure(call: Call<ReviewPublic>, t: Throwable){
+                 var valores = DBApplication.dataDBHelper.verpublicacion(id_review)
+                txtPremisa.text = valores.subtitulo;
+                txtTitleBook.text = valores.titulo;
+                txtResena.text = valores.contenido;
+                val imgEncode = Base64.getDecoder().decode(valores.image)
+                val imageBitmap:Bitmap = BitmapFactory.decodeByteArray(imgEncode, 0, imgEncode.size)
+
+                  carouselImages.add(imageBitmap)
+                carousel()
             }
 
         })

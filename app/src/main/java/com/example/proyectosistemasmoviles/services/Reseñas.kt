@@ -25,6 +25,6 @@ interface Reseñas {
     fun Eliminar(@Query("idReview")idReview: Int?) : Call<elimina>
 
     @POST("borrarReview.php")
-    fun ModificarU(@Body user: Modificar): Call <Modificar>
+    fun ModificarU(@Body user: Modificar): Call <Estatus>
 
 }

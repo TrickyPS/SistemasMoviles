@@ -8,7 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_input2">
+        android:background="@drawable/border_input2"
+        android:backgroundTint="#39393C">
 
         <ImageView
             android:id="@+id/imagenlista"
@@ -28,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="file path"
+            android:textColor="#F6F6F6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imagenlista"

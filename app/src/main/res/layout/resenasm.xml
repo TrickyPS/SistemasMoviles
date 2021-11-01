@@ -10,7 +10,7 @@
         android:id="@+id/cardHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#FBFAFB"
+        app:cardBackgroundColor="#00FBFAFB"
         app:cardCornerRadius="5dp"
         app:cardElevation="7dp"
         app:cardPreventCornerOverlap="false"
@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#39393C"
                 android:orientation="vertical"
                 android:padding="5dp">
 
@@ -47,6 +48,7 @@
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
                     android:text="Titulo de la reseña"
+                    android:textColor="#FDFDFD"
                     android:textSize="20sp" />
 
                 <TextView
@@ -58,6 +60,7 @@
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
                     android:text="Titulo del libro"
+                    android:textColor="#FDFDFD"
                     android:textStyle="bold" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout

@@ -3,20 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/activity_inicio.xml" value="0.3378623188405797" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.32222222222222224" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.382051282051282" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.382051282051282" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/drawable/imagenredonda.xml" value="0.3880208333333333" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/drawable/imagenredonda2.xml" value="0.3645833333333333" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/drawable/linea.xml" value="0.3731481481481482" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/drawable/lineaarriba.xml" value="0.32685185185185184" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/activity_inicio.xml" value="0.33" />
         <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/activity_login.xml" value="0.3416666666666667" />
         <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/activity_sign_up.xml" value="0.3416666666666667" />
-        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_cms.xml" value="0.5" />
-        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_cms2.xml" value="0.2265625" />
-        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_fragmentobuscar.xml" value="0.5" />
-        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_fragmentocontrasena.xml" value="0.276268115942029" />
-        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoinicio.xml" value="0.17447916666666666" />
-        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoresenas.xml" value="0.20885416666666667" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/dialog_image.xml" value="0.3020833333333333" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_cms.xml" value="0.33" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_cms2.xml" value="0.33" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_fragmentobuscar.xml" value="0.33" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_fragmentocontrasena.xml" value="0.25" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_fragmentofavoritos.xml" value="0.371875" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoinicio.xml" value="0.33" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoperfil.xml" value="0.33" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_fragmentoresenas.xml" value="0.5" />
         <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/fragment_mis_resenas.xml" value="0.33" />
         <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/item_data.xml" value="0.276268115942029" />
         <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/item_data2.xml" value="0.33" />
-        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/item_inicio.xml" value="0.20885416666666667" />
-        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/item_list_cms.xml" value="0.20885416666666667" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/item_inicio.xml" value="0.5" />
+        <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/item_list_cms.xml" value="0.5" />
         <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/item_misreseñas.xml" value="0.5" />
         <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/item_reseñas.xml" value="0.33242753623188404" />
         <entry key="..\:/APedro/Escuela/SistemasMoviles/app/src/main/res/layout/resenasm.xml" value="0.3269927536231884" />

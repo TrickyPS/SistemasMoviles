@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectosistemasmoviles.Modelos.Usuario
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_sign_up.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.regex.Pattern
 
 class SignUp : AppCompatActivity() {
     var pref: SharedPreferences? = null
@@ -51,13 +53,26 @@ class SignUp : AppCompatActivity() {
         startActivity(activityLogin)
         finish()
     }
+    fun isValidPasswordFormat(password: String): Boolean {
+        val passwordREGEX = Pattern.compile("^" +
+                "(?=.*[0-9])" +         //at least 1 digit
+                "(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                "(?=.*[@#$%^&+=])" +    //at least 1 special character
+                "(?=\\S+$)" +           //no white spaces
+                ".{8,}" +               //at least 8 characters
+                "$");
+        return passwordREGEX.matcher(password).matches()
+    }
     private fun AgregarUsuario() {
         val nombre: String = CampoApellido.text.toString()
         val apellido: String = CampoNombre.text.toString()
         val email: String = CampoCorreo.text.toString()
         val password: String = CampoContraseña.text.toString()
-
-        if (nombre.isEmpty() && apellido.isEmpty() && email.isEmpty() && password.isEmpty()) {
+        val comprueba = isValidPasswordFormat(password)
+        val o = 2
+        if (comprueba == false || nombre.isEmpty() && apellido.isEmpty() && email.isEmpty() && password.isEmpty()) {
             Toast.makeText(this, "Llene todos los campos", Toast.LENGTH_LONG).show()
         } else {
             val userServices: UserService =
@@ -84,11 +99,14 @@ class SignUp : AppCompatActivity() {
                             Toast.makeText(this@SignUp, "Este correo ya esta registrado", Toast.LENGTH_LONG)
                                 .show()
                         }else{
-                            //TODO AQUI COLOCAR EL CODIGO
+                            Toast.makeText(this@SignUp, "Te registraste correctamente", Toast.LENGTH_LONG)
+                                .show()
+                            Handler().postDelayed({
+                                var activityLogin = Intent(this@SignUp,Login::class.java)
+                                activityLogin.putExtra("Registrar", "hola")
+                                startActivity(activityLogin)
+                            }, 1200)
 
-                             var activityLogin = Intent(this@SignUp,Login::class.java)
-                            activityLogin.putExtra("Registrar", "hola")
-                            startActivity(activityLogin)
                         }
                     }
                     else {

@@ -51,7 +51,7 @@ class fragmentobuscar : Fragment() {
                 val searchText = newText!!.toLowerCase(Locale.getDefault())
                 if(searchText.isNotEmpty()){
                     tempList.forEach {
-                        if(it.titulo?.toLowerCase(Locale.getDefault())!!.contains(searchText)){
+                        if(it.titulo?.toLowerCase(Locale.getDefault())!!.contains(searchText) || it.nombre?.toLowerCase(Locale.getDefault())!!.contains(searchText) || it.apellido?.toLowerCase(Locale.getDefault())!!.contains(searchText)){
                             reviewsList.add(it)
                         }
                     }
@@ -80,6 +80,7 @@ class fragmentobuscar : Fragment() {
                         reviewsList.add(review)
 
                     }
+                    cargando.visibility = View.GONE
                     tempList.addAll(reviewsList)
                     buscaradapter.notifyDataSetChanged()
 

@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1E1E20"
+    android:backgroundTintMode="add"
+    android:foregroundTint="#FDFDFD"
+    android:foregroundTintMode="add"
     tools:context=".Inicio">
 
 
@@ -11,7 +15,9 @@
         android:id="@+id/generalonnav"
         android:layout_width="409dp"
         android:layout_height="50dp"
-        android:background="@drawable/lineaarriba"
+        android:background="@color/fofin2"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +32,7 @@
         app:layout_constraintBottom_toTopOf="@+id/generalonnav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/barran"
         app:navGraph="@navigation/navegacionabajo" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -35,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="#3E3030"
+        android:backgroundTint="#000000"
         android:clickable="true"
         android:tint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/generalonnav"
@@ -43,15 +49,17 @@
         app:srcCompat="@drawable/ic_baseline_publish_24" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/barran"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/linea"
+        android:layout_marginEnd="4dp"
+        android:background="@color/fofin2"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -59,42 +67,31 @@
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="28dp">
 
-            <Button
-                android:id="@+id/btnRegresar"
-                android:layout_width="72dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/ic_baseline_arrow_right_alt_24"
-                android:backgroundTint="#000000"
-                android:rotation="180"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <ImageView
                 android:id="@+id/imagenPerfilToolbar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginEnd="16dp"
                 android:background="@drawable/fotopasillo"
                 android:foreground="@drawable/imagenredonda"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.545" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/nombrett"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reeboked"
+                android:layout_marginStart="16dp"
+                android:text="TextView"
+                android:textColor="#DFDEDE"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imagenPerfilToolbar"
-                app:layout_constraintHorizontal_bias="0.458"
-                app:layout_constraintStart_toEndOf="@+id/btnRegresar"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.432" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imagenPerfilToolbar"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

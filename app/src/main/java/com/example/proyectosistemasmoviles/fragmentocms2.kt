@@ -10,6 +10,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
@@ -80,13 +81,9 @@ private lateinit var cargacms: cargacms
        }
 
         vista.botonsubir.setOnClickListener {
-
             if (bundle != null && id_update != null){
                 subirreseñaU()
-            }else{
-                subirreseña()
             }
-
         }
 
         return vista
@@ -111,52 +108,6 @@ private lateinit var cargacms: cargacms
 
     }
 
-    private fun subirreseña(){
-        val titulo: String = contravieja.text.toString()
-        val premisa: String = contranueva.text.toString()
-        val descripcion: String= resenap.text.toString()
-
-        if(titulo.isEmpty() || premisa.isEmpty() || descripcion.isEmpty()){
-            Toast.makeText(this.context, "Llene todos los campos", Toast.LENGTH_LONG).show()
-        }else{
-            val resena: Reseñas = RestEngine.getRestEngine().create(Reseñas::class.java)
-            val result: Call<Review> = resena.saveReview(
-                Review(
-               null,titulo,premisa,descripcion,id,null,null
-                )
-            )
-            result.enqueue(object : Callback<Review> {
-                override fun onResponse(call: Call<Review>, response: Response<Review>) {
-                    var resp = response.body()
-                    if(resp!= null){
-                        var id = resp.id;
-                        for( image in imageList ){
-                            saveImageReview(id!!,image)
-                        }
-                        //Limpia el formulario
-                        imageList.clear();
-                        cargacms.notifyDataSetChanged()
-                        contravieja.setText("")
-                        contranueva.setText("")
-                        resenap.setText("")
-
-                    }
-                }
-
-                override fun onFailure(call: Call<Review>, t: Throwable) {
-                    println(t.toString())
-                }
-
-            })
-
-        }
-
-    }
-
-
-
-
-
     private fun subirreseñaU(){
         val titulo: String = contravieja.text.toString()
         val premisa: String = contranueva.text.toString()
@@ -166,13 +117,14 @@ private lateinit var cargacms: cargacms
             Toast.makeText(this.context, "Llene todos los campos", Toast.LENGTH_LONG).show()
         }else{
             val resena: Reseñas = RestEngine.getRestEngine().create(Reseñas::class.java)
-            val result: Call<Modificar> = resena.ModificarU(
+            val result: Call<Estatus> = resena.ModificarU(
                 Modificar(
                     id_update,titulo,premisa,descripcion
                 )
             )
-            result.enqueue(object : Callback<Modificar> {
-                override fun onResponse(call: Call<Modificar>, response: Response<Modificar>) {
+            result.enqueue(object : Callback<Estatus> {
+                override fun onResponse(call: Call<Estatus>, response: Response<Estatus>) {
+
                     var resp = response.body()
                     if(resp!= null){
 
@@ -185,15 +137,22 @@ private lateinit var cargacms: cargacms
                         contravieja.setText("")
                         contranueva.setText("")
                         resenap.setText("")
-                        val activity = context as AppCompatActivity
-                        val frag =  fragment_mis_resenas()
-                        val args = Bundle()
-                        frag.setArguments(args)
-                        activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentogeneral, frag).addToBackStack(null).commit()
+
+                        Toast.makeText(context, "Se modifico correctamente", Toast.LENGTH_LONG)
+                            .show()
+                        Handler().postDelayed({
+                            val activity = context as AppCompatActivity
+                            val frag =  fragment_mis_resenas()
+                            val args = Bundle()
+                            frag.setArguments(args)
+                            activity.supportFragmentManager.beginTransaction().replace(R.id.fragmentogeneral, frag).addToBackStack(null).commit()
+                        }, 1200)
+
+
                     }
                 }
 
-                override fun onFailure(call: Call<Modificar>, t: Throwable) {
+                override fun onFailure(call: Call<Estatus>, t: Throwable) {
                     println(t.toString())
                 }
 

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import com.example.proyectosistemasmoviles.Modelos.Cambiar
 import com.example.proyectosistemasmoviles.Modelos.Estatus
@@ -30,6 +31,9 @@ class fragmentocontrasena : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
+
+           this.activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+
             pref = context?.getSharedPreferences("usuario", Context.MODE_PRIVATE)
             id = pref?.getInt("Id",0)
             // Inflate the layout for this fragment

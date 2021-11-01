@@ -16,12 +16,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.proyectosistemasmoviles.DBApplication.Companion.dataDBHelper
 import com.example.proyectosistemasmoviles.Modelos.Estatus
 import com.example.proyectosistemasmoviles.Modelos.Images
-import com.example.proyectosistemasmoviles.Modelos.Modificar
 import com.example.proyectosistemasmoviles.Modelos.Review
 import com.example.proyectosistemasmoviles.adaptadores.cargacms
 import com.example.proyectosistemasmoviles.services.ImagesService
@@ -31,6 +30,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.dialog_image.*
 import kotlinx.android.synthetic.main.fragment_cms.*
 import kotlinx.android.synthetic.main.fragment_cms.view.*
+import okhttp3.internal.notify
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,6 +39,7 @@ import java.util.*
 
 class fragmentocms : Fragment() {
     var pref: SharedPreferences? = null
+    var pref2: SharedPreferences?= null
     var id : Int? = null
     var id_update : Int? = null
     var tituloU : String? = null
@@ -53,17 +54,39 @@ private lateinit var cargacms: cargacms
     ): View? {
         val  pref = context?.getSharedPreferences("usuario", Context.MODE_PRIVATE)
         id = pref?.getInt("Id",0)
-        var vista = inflater.inflate(R.layout.fragment_cms, container, false)
 
+        val  pref2 = context?.getSharedPreferences("publicacion", Context.MODE_PRIVATE)
+        var pp :String? = pref2?.getString("titulo","")
+        var pp2 = pref2?.getString("subtitulo","")
+        var pp3 = pref2?.getString("contenido","")
+
+
+        var vista = inflater.inflate(R.layout.fragment_cms, container, false)
+        vista.contravieja.setText(pp)
+        vista.contranueva.setText(pp2)
+        vista.resenap.setText(pp3)
 
         dialog = BottomSheetDialog(requireContext())
         cargacms = cargacms(vista.context,imageList)
         vista.reciclaim.adapter = cargacms
+
+        var imageListTT = dataDBHelper.traerimagenes()
+        for(images in imageListTT) {
+            imageList.add(images)
+        }
+        cargacms.notifyDataSetChanged()
+
        vista.botoni.setOnClickListener{
         showDialog()
 
 
        }
+
+        vista.limpiar.setOnClickListener{
+            imageList.clear()
+            cargacms.notifyDataSetChanged()
+            dataDBHelper.truncarimagenes()
+        }
    vista.botonsubir.setOnClickListener{
 
        subirreseña()
@@ -73,6 +96,23 @@ private lateinit var cargacms: cargacms
         return vista
     }
 
+    override fun onStop() {
+        super.onStop()
+
+        var variable1 = contravieja.text.toString()
+        var variable2 = contranueva.text.toString()
+        var variable3 = resenap.text.toString()
+
+        val sharedPreference =  context?.getSharedPreferences("publicacion",Context.MODE_PRIVATE)
+        var editor = sharedPreference?.edit()
+        editor?.putString("titulo",  variable1 )
+        editor?.putString("subtitulo",variable2)
+        editor?.putString("contenido", variable3)
+
+        editor?.commit()
+
+
+    }
     private fun showDialog() {
         dialog.setContentView(R.layout.dialog_image)
         dialog.show()
@@ -93,8 +133,8 @@ private lateinit var cargacms: cargacms
     }
 
     private fun subirreseña(){
-        val titulo: String = contravieja.text.toString()
-        val premisa: String = contranueva.text.toString()
+        val titulo: String =     contravieja.text.toString()
+        val premisa: String =    contranueva.text.toString()
         val descripcion: String= resenap.text.toString()
 
         if(titulo.isEmpty() || premisa.isEmpty() || descripcion.isEmpty()){
@@ -112,7 +152,7 @@ private lateinit var cargacms: cargacms
                     if(resp!= null){
                         var id = resp.id;
                         for( image in imageList ){
-                            saveImageReview(id!!,image)
+                            saveImageReview( id!!,image)
                         }
                         //Limpia el formulario
                         imageList.clear();
@@ -120,12 +160,19 @@ private lateinit var cargacms: cargacms
                         contravieja.setText("")
                         contranueva.setText("")
                         resenap.setText("")
-
+                        dataDBHelper.truncarimagenes()
                     }
                 }
 
                 override fun onFailure(call: Call<Review>, t: Throwable) {
-                    println(t.toString())
+             var insertarP = dataDBHelper.insertPublication(Review(null,titulo,premisa,descripcion,id,null,null))
+                    if(insertarP == true){
+                        var id  = dataDBHelper.ObtenerUltimoid()
+                        for( image in imageList ){
+                         dataDBHelper.InsertarFoto(id!!,image)
+                        }
+                        dataDBHelper.truncarimagenes()
+                    }
                 }
 
             })
@@ -221,6 +268,10 @@ private lateinit var cargacms: cargacms
 
                 imageList.add(imageByteArray)
                 cargacms.notifyDataSetChanged()
+
+                    dataDBHelper.InsertaIMG(imageByteArray)
+
+
             }
 
             if (requestcode == 1002) {
@@ -229,13 +280,15 @@ private lateinit var cargacms: cargacms
                 val comprime = ByteArrayOutputStream()
                 photo.compress(Bitmap.CompressFormat.JPEG, 25, comprime)
                 imageList.add(comprime.toByteArray())
-                cargacms?.notifyDataSetChanged()
+                dataDBHelper.InsertaIMG(comprime.toByteArray())
+                cargacms?.notifyDataSetChanged()}
+
             }
 
         }
     }
 
-    private fun saveImageReview(idReview :Int,img: ByteArray) {
+    private fun saveImageReview(idReview: Int, img: ByteArray) {
 
       val encodedString:String =  Base64.getEncoder().encodeToString(img)
         var images : Images = Images(
@@ -263,4 +316,8 @@ private lateinit var cargacms: cargacms
         })
     }
 
-}
+
+
+
+
+
