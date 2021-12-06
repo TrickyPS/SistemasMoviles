@@ -26,7 +26,7 @@ class RestEngine {
                 .readTimeout(5, TimeUnit.MINUTES) // read timeou
                 .build()
             val retrofit =  Retrofit.Builder()
-                .baseUrl("http://192.168.0.16:3000/controllers/") // tu url
+                .baseUrl("http://159.223.135.168/APISM/controllers/") // tu url
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

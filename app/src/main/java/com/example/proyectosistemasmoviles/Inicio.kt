@@ -4,11 +4,7 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.text.SpannableString
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.iterator
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -35,7 +31,7 @@ class Inicio : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
-        AppBarConfiguration(setOf(R.id.fragmentoinicio,R.id.fragmentobuscar,R.id.fragmentoperfil))
+        AppBarConfiguration(setOf(R.id.fragmentoinicio2,R.id.fragmentobuscar,R.id.fragmentoperfil))
 
         generalonnav.setupWithNavController(findNavController(R.id.fragmentogeneral))
 
@@ -45,7 +41,7 @@ class Inicio : AppCompatActivity() {
             frag.setArguments(args)
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentogeneral, frag)
-            transaction.commit()
+            transaction.commit()    
 
         }
 

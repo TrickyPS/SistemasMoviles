@@ -86,6 +86,9 @@ private lateinit var cargacms: cargacms
             imageList.clear()
             cargacms.notifyDataSetChanged()
             dataDBHelper.truncarimagenes()
+            contravieja.setText("")
+            contranueva.setText("")
+            resenap.setText("")
         }
    vista.botonsubir.setOnClickListener{
 

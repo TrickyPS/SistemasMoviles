@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navegacionabajo"
-    app:startDestination="@id/fragmentoinicio">
+    app:startDestination="@id/fragmentoinicio2">
 
     <fragment
-        android:id="@+id/fragmentoinicio"
+        android:id="@+id/fragmentoinicio2"
         android:name="com.example.proyectosistemasmoviles.fragmentoinicio"
         android:label="fragment_fragmentoinicio"
         tools:layout="@layout/fragment_fragmentoinicio" />
